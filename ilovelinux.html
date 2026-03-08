@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>台灣民團協會 | 民防首頁</title>
+    <title>專案詳情 | 台灣民團協會</title>
     <!-- 引入 Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -15,7 +15,6 @@
             --accent: #2563eb;     
             --border: rgba(0, 0, 0, 0.06);
             --nav-height: 80px;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         * {
@@ -28,7 +27,7 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-body);
-            line-height: 1.7;
+            line-height: 1.8;
             overflow-x: hidden;
         }
 
@@ -47,7 +46,7 @@
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             z-index: 2000;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s ease;
         }
 
         .nav-title-sticky {
@@ -73,11 +72,13 @@
             color: var(--accent);
             text-decoration: none;
             letter-spacing: -1px;
+            z-index: 2100;
         }
 
         .nav-external-links {
             display: flex;
             gap: 12px;
+            z-index: 2100;
         }
 
         .nav-external-links a {
@@ -95,14 +96,31 @@
         .nav-external-links a:hover {
             background: var(--accent);
             color: #fff;
-            border-color: var(--accent);
+        }
+
+        /* 手機版三橫線按鈕 */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 2500;
+            padding: 10px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-main);
+            border-radius: 2px;
+            transition: 0.3s;
         }
 
         /* Hero 區塊 */
         .hero-section {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
-            min-height: 90vh;
+            min-height: 80vh;
             padding: calc(var(--nav-height) + 40px) 5% 60px;
             gap: 40px;
             align-items: center;
@@ -128,7 +146,7 @@
             left: 0;
             right: 0;
             padding: 40px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
             color: white;
         }
 
@@ -139,30 +157,6 @@
             margin-bottom: 10px;
         }
 
-        .hero-subtitle {
-            font-size: 1.5rem;
-            opacity: 0.9;
-        }
-        
-        /* 手機版三橫線按鈕 */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            z-index: 2100;
-            padding: 10px;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--text-main);
-            border-radius: 2px;
-            transition: 0.3s;
-        }
-
-        /* 大綱區塊 */
         .outline-container {
             display: flex;
             flex-direction: column;
@@ -178,125 +172,83 @@
         }
 
         .outline-desc {
-            font-size: 1.1rem;
+            font-size: 1.25rem;
             color: var(--text-body);
-            margin-bottom: 30px;
+            max-width: 400px;
         }
 
-        .outline-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-
-        .outline-links a {
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            padding: 10px 20px;
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .outline-links a:hover {
-            transform: translateY(-3px);
-            background: var(--accent);
-            color: #fff;
-            border-color: var(--accent);
-        }
-
-        .scroll-hint {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--accent);
-            font-weight: 700;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        /* 內容區塊 */
-        .container {
-            max-width: 1000px;
+        /* 圖文段落區塊 */
+        .content-container {
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 80px 24px;
+            padding: 100px 24px;
         }
 
-        section {
-            margin-bottom: 120px;
+        .content-section {
+            margin-bottom: 150px;
         }
 
-        h2 {
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
             font-size: 2.5rem;
+            font-weight: 900;
             color: var(--text-main);
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
         }
 
-        h2::before {
+        .section-header h2::after {
             content: '';
-            width: 40px;
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
             height: 4px;
             background: var(--accent);
             border-radius: 2px;
         }
 
-        /* 成員介紹樣式區塊 */
-        .member-grid {
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-            gap: 20px;
-        }
-
-        .member-card {
-            background: white; 
-            padding: 24px; 
-            border-radius: 16px; 
-            border: 1px solid var(--border);
-            transition: 0.3s ease;
-            text-align: left;
-        }
-
-        .member-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px -5px rgba(0,0,0,0.05);
-            border-color: var(--accent);
-        }
-
-        .member-avatar {
-            width: 64px; 
-            height: 64px; 
-            background: #e2e8f0; 
-            border-radius: 50%; 
-            margin-bottom: 16px;
+        .row {
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: #94a3b8;
-            font-size: 1.5rem;
+            gap: 60px;
         }
 
-        .member-name {
-            color: var(--text-main);
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 4px;
+        .row.reverse {
+            flex-direction: row-reverse;
         }
 
-        .member-role {
-            font-size: 0.85rem;
+        .col-text {
+            flex: 1;
+        }
+
+        .col-text p {
+            font-size: 1.15rem;
+            margin-bottom: 20px;
             color: var(--text-body);
-            font-weight: 500;
         }
 
-        /* 動畫類別 */
+        .col-image {
+            flex: 1;
+        }
+
+        .col-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.4s ease;
+        }
+
+        .col-image img:hover {
+            transform: scale(1.02);
+        }
+
+        /* 動畫 */
         .fade-up {
             opacity: 0;
             transform: translateY(30px);
@@ -322,7 +274,12 @@
                 text-align: center;
             }
             .outline-container { align-items: center; }
-            .outline-links, .nav-external-links { justify-content: center; }
+            .hero-title { font-size: 2.5rem; }
+            .outline-title { font-size: 4rem; }
+            .row, .row.reverse {
+                flex-direction: column;
+                gap: 40px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -369,10 +326,12 @@
     </style>
 </head>
 <body>
+
     <nav id="navbar">
         <a href="index.html" class="logo">T.C.A</a>
-        <div class="nav-title-sticky" id="navProjectTitle">台灣民團專案</div>
-
+        <div class="nav-title-sticky">居家堡壘詳情</div>
+        
+        <!-- 手機版切換按鈕 -->
         <div class="menu-toggle" id="mobile-menu">
             <span></span>
             <span></span>
@@ -388,63 +347,74 @@
     </nav>
 
     <main>
+        <!-- Hero Section -->
         <section class="hero-section">
-            <div class="hero-image-container fade-up" id="heroTarget">
-                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=2000" alt="專案背景">
+            <div class="hero-image-container fade-up">
+                <img src="https://images.unsplash.com/photo-1590004953392-5aba2e785943?auto=format&fit=crop&q=80&w=2000" alt="居家安全">
                 <div class="hero-overlay">
-                    <h1 class="hero-title">軍民一心</h1>
-                    <p class="hero-subtitle">國防之後的無形防線</p>
+                    <h1 class="hero-title">居家堡壘計畫</h1>
                 </div>
             </div>
 
             <div class="outline-container fade-up">
-                <h2 class="outline-title">大綱</h2>
-                <!-- <p class="outline-desc">點擊章節快速跳轉：</p> -->
-                
-                <div class="outline-links">
-                    <a href="#about">3 成員介紹</a>
-                    <a href="#guide">1 知識引導</a>
-                    <a href="#results">2 成果省思</a>
-                </div>
-
-                <a href="#content-start" class="scroll-hint">
-                    或向下滑動探索 <span>→</span>
-                </a>
+                <h2 class="outline-title">詳情</h2>
+                <p class="outline-desc">
+                    深入了解我們如何透過社區互助與居家防護準備，建立穩固的基層防禦體系。
+                </p>
             </div>
         </section>
 
-        <div class="container" id="content-start">
-            <section id="guide" class="fade-up">
-                <h2>知識引導</h2>
-                <p>在台灣這片多災多難的土地上，民防不僅是政府的責任，更是每一位公民的義務。台灣民團協會致力於打造一個全民參與的防災網絡，讓每個人都能成為自己和家人的第一道防線。</p>
-            </section>
-
-            <section id="results" class="fade-up">
-                <h2>成果省思</h2>
-                <p>民防，是人民自我防衛的基石。在過去的訓練中，我們發現社區的韌性來自於鄰里間的互助。</p>
-            </section>
-
-            <section id="about" class="fade-up">
-                <h2>成員介紹</h2>
-                <!-- 修改後的成員卡片結構，使用了樣式類別 -->
-                <div class="member-grid">
-                    <div class="member-card">
-                        <div class="member-avatar">👤</div>
-                        <div class="member-name">成員 A</div>
-                        <div class="member-role">專案統籌</div>
+        <!-- 圖文並茂的內文 -->
+        <div class="content-container">
+            
+            <!-- 第一段落 -->
+            <section class="content-section fade-up">
+                <div class="section-header">
+                    <h2>社區互助網絡</h2>
+                </div>
+                <div class="row">
+                    <div class="col-text">
+                        <p>民防的第一現場不在戰場，而是在家門口。我們的計畫重點在於整合社區鄰里，建立緊急聯絡網。當災難發生時，政府資源可能無法第一時間抵達，此時鄰里間的互助是生存關鍵。</p>
+                        <p>透過定期的避難模擬演習與資源盤點，每個家庭都能清楚知道最近的避難點與急救站位置。</p>
                     </div>
-                    <div class="member-card">
-                        <div class="member-avatar">👤</div>
-                        <div class="member-name">成員 B</div>
-                        <div class="member-role">資料收集</div>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar">👤</div>
-                        <div class="member-name">成員 C</div>
-                        <div class="member-role">視覺設計</div>
+                    <div class="col-image">
+                        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=800" alt="社區討論圖">
                     </div>
                 </div>
             </section>
+
+            <!-- 第二段落 (反向排版) -->
+            <section class="content-section fade-up">
+                <div class="section-header">
+                    <h2>居家物資整備</h2>
+                </div>
+                <div class="row reverse">
+                    <div class="col-text">
+                        <p>我們提供標準化的居家生存包清單，涵蓋了 72 小時所需的糧食、潔淨水源以及基本的急救醫藥用品。重點不在於昂貴的裝備，而在於「正確的分類」與「定期的檢查」。</p>
+                        <p>除了實體物資，數位備份與重要證件的保存也是堡壘計畫中不可或缺的一環。</p>
+                    </div>
+                    <div class="col-image">
+                        <img src="https://images.unsplash.com/photo-1584263347416-85a18a4524a2?auto=format&fit=crop&q=80&w=800" alt="急救包圖">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 第三段落 -->
+            <section class="content-section fade-up">
+                <div class="section-header">
+                    <h2>緊急醫療訓練</h2>
+                </div>
+                <div class="row">
+                    <div class="col-text">
+                        <p>擁有止血帶與急救箱是不夠的，必須具備正確的操作知識。我們舉辦針對普通市民的止血訓練 (Stop the Bleed) 與基礎心理急救課程。</p>
+                        <p>在混亂的環境中，心理韌性與基礎醫療能力同樣重要，能有效降低社區的集體恐慌並增加存活機率。</p>
+                    </div>
+                    <div class="col-image">
+                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800" alt="醫療訓練圖">
+                    </div>
+                </div>
+            </section>
+
         </div>
     </main>
 
@@ -464,14 +434,16 @@
                 navLinks.classList.toggle('active');
             });
 
+            // 2. 滾動效果
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 150) {
+                if (window.scrollY > 100) {
                     navbar.classList.add('scrolled');
                 } else {
                     navbar.classList.remove('scrolled');
                 }
             });
 
+            // 3. 進場動畫
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -481,19 +453,6 @@
             }, { threshold: 0.1 });
 
             document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        window.scrollTo({
-                            top: target.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
         });
     </script>
 </body>
