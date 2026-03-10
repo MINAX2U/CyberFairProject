@@ -193,7 +193,7 @@ nav.scrolled .nav-title-sticky {
     padding-bottom: 15px;
 }
 
-.section-header h2::after {
+/* .section-header h2::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -202,7 +202,7 @@ nav.scrolled .nav-title-sticky {
     height: 4px;
     background: var(--accent);
     border-radius: 2px;
-}
+} */
 
 .content-section h3{
     text-align: center;
