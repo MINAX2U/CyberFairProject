@@ -6,270 +6,22 @@
     <title>專案詳情 | 台灣民團協會</title>
     <!-- 引入 Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #f8fafc;    
-            --card-bg: #ffffff;    
-            --text-main: #0f172a;  
-            --text-body: #475569;  
-            --accent: #2563eb;     
-            --border: rgba(0, 0, 0, 0.06);
-            --nav-height: 80px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', 'Noto Sans TC', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-body);
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
-
-        /* 導覽列 */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: var(--nav-height);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 5%;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            z-index: 2000;
-            transition: all 0.4s ease;
-        }
-
-        .nav-title-sticky {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%) translateY(20px);
-            opacity: 0;
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: var(--text-main);
-            transition: all 0.4s ease;
-            pointer-events: none;
-        }
-
-        nav.scrolled .nav-title-sticky {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--accent);
-            text-decoration: none;
-            letter-spacing: -1px;
-        }
-
-        .nav-external-links {
-            display: flex;
-            gap: 12px;
-        }
-
-        .nav-external-links a {
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            padding: 8px 16px;
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            transition: 0.3s;
-        }
-
-        .nav-external-links a:hover {
-            background: var(--accent);
-            color: #fff;
-        }
-
-        /* Hero 區塊 (仿首頁風格，無按鈕) */
-        .hero-section {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            min-height: 80vh;
-            padding: calc(var(--nav-height) + 40px) 5% 60px;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .hero-image-container {
-            position: relative;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            aspect-ratio: 16 / 10;
-        }
-
-        .hero-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 40px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            color: white;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 10px;
-        }
-
-        .outline-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .outline-title {
-            font-size: 6rem;
-            font-weight: 900;
-            color: var(--text-main);
-            line-height: 1;
-            margin-bottom: 20px;
-        }
-
-        .outline-desc {
-            font-size: 1.25rem;
-            color: var(--text-body);
-            max-width: 400px;
-        }
-
-        /* 圖文段落區塊 */
-        .content-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 100px 24px;
-        }
-
-        .content-section {
-            margin-bottom: 150px;
-        }
-
-        /* 置中標題，字體小於頁面標題 */
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--text-main);
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-        }
-
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 25%;
-            width: 50%;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-
-        .row {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-        }
-
-        .row.reverse {
-            flex-direction: row-reverse;
-        }
-
-        .col-text {
-            flex: 1;
-        }
-
-        .col-text p {
-            font-size: 1.15rem;
-            margin-bottom: 20px;
-            color: var(--text-body);
-        }
-
-        .col-image {
-            flex: 1;
-        }
-
-        .col-image img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: transform 0.4s ease;
-        }
-
-        .col-image img:hover {
-            transform: scale(1.02);
-        }
-
-        /* 動畫 */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        footer {
-            padding: 60px 5%;
-            background: #fff;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-
-        /* 響應式 */
-        @media (max-width: 1024px) {
-            .hero-section {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .outline-container { align-items: center; }
-            .hero-title { font-size: 2.5rem; }
-            .outline-title { font-size: 4rem; }
-            .row, .row.reverse {
-                flex-direction: column;
-                gap: 40px;
-            }
-        }
-    </style>
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
 
     <nav id="navbar">
         <a href="index.html" class="logo">T.C.A</a>
-        <div class="nav-title-sticky">居家堡壘詳情</div>
-        <div class="nav-external-links">
+        <div class="nav-title-sticky">行動與省思</div>
+
+        <!-- 手機版切換按鈕 -->
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="nav-external-links" id="nav-links">
             <a href="index.html">首頁</a>
             <a href="defence.html">高默防衛</a>
             <a href="ilovelinux.html">民防運作與行動</a>
@@ -281,14 +33,11 @@
         <!-- Hero Section -->
         <section class="hero-section">
             <div class="hero-image-container fade-up">
-                <img src="https://images.unsplash.com/photo-1590004953392-5aba2e785943?auto=format&fit=crop&q=80&w=2000" alt="居家安全">
-                <div class="hero-overlay">
-                    <h1 class="hero-title">居家堡壘計畫</h1>
-                </div>
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=2000" alt="REFLECT">
             </div>
 
             <div class="outline-container fade-up">
-                <h2 class="outline-title">詳情</h2>
+                <h2 class="outline-title">我們的<br>行動與省思</h2>
                 <p class="outline-desc">
                     深入了解我們如何透過社區互助與居家防護準備，建立穩固的基層防禦體系。
                 </p>
@@ -301,12 +50,13 @@
             <!-- 第一段落 -->
             <section class="content-section fade-up">
                 <div class="section-header">
-                    <h2>社區互助網絡</h2>
+                    <h2>社區推廣成果：從被動等待到主動參與</h2>
                 </div>
                 <div class="row">
                     <div class="col-text">
-                        <p>民防的第一現場不在戰場，而是在家門口。我們的計畫重點在於整合社區鄰里，建立緊急聯絡網。當災難發生時，政府資源可能無法第一時間抵達，此時鄰里間的互助是生存關鍵。</p>
-                        <p>透過定期的避難模擬演習與資源盤點，每個家庭都能清楚知道最近的避難點與急救站位置。</p>
+                        <p>公私協力各司其職 (Public-Private Collaboration):<br>第一線由專業軍警消負責高強度搶救；社區後方由民眾（特別是女性與留守社區者）擔任輔助，負責治安、醫療與物資發放，維持社會運作。</p>
+                        <p>光復賑災的社會韌性 (Social Resilience in Disaster Relief):<br>以 2025 年花蓮馬太鞍溪堰塞湖災害為例，自發性的志工「鏟子超人」湧入災區協助，展現了民防是一種「全民參與」的責任意識。</p>
+                        <p>落實訓用合一 (Integrating Training and Application):<br>拒絕形式主義，確保每個人在危急時刻都能精準執行任務。</p>
                     </div>
                     <div class="col-image">
                         <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=800" alt="社區討論圖">
@@ -314,18 +64,45 @@
                 </div>
             </section>
 
-            <!-- 第二段落 (反向排版) -->
+            <!-- 第二段落 -->
             <section class="content-section fade-up">
                 <div class="section-header">
-                    <h2>居家物資整備</h2>
+                    <h2>我們的行動：從意識覺醒到專業救護實踐</h2>
                 </div>
-                <div class="row reverse">
+
+                <h3>行動一：觀看《看不見的國家》紀錄片 —— 建立民防意識</h3>
+                <div class="row" style="margin-bottom: 40px;">
                     <div class="col-text">
-                        <p>我們提供標準化的居家生存包清單，涵蓋了 72 小時所需的糧食、潔淨水源以及基本的急救醫藥用品。重點不在於昂貴的裝備，而在於「正確的分類」與「定期的檢查」。</p>
-                        <p>除了實體物資，數位備份與重要證件的保存也是堡壘計畫中不可或缺的一環。</p>
+                        <p>行動內容</p>
+                        <ul>
+                            <li><p>參與觀影： 兩位組員前往戲院觀賞紀錄片《看不見的國家》，深入了解台灣在國際地緣政治下的處境。</p></li>
+                            <li><p>議題研討： 針對片中呈現的「社會韌性」進行討論，觀察民間團體如何自發性組織防災訓練。</p></li>
+                        </ul>
                     </div>
-                    <div class="col-image">
-                        <img src="https://images.unsplash.com/photo-1584263347416-85a18a4524a2?auto=format&fit=crop&q=80&w=800" alt="急救包圖">
+                    <div class="col-text">
+                        <p>心得與成果</p>
+                        <ul>
+                            <li><p>意識覺醒： 我們體認到民防不只是軍事議題，更是每位公民對家園的承諾。</p></li>
+                            <li><p>理論連結： 電影中強調的「自我防衛意識」激發了我們研究此專題的熱情，明白堅韌的社會源於每位公民的準備。</p></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>行動二：參與專業救護培訓 EMT-1 —— 掌握救命關鍵</h3>
+                <div class="row">
+                    <div class="col-text">
+                        <p>行動內容</p>
+                        <ul>
+                            <li><p>專業受訓： 組員親自參與為期 45 小時的「EMT-1 初級救護技術員」國家級標準課程。</p></li>
+                            <li><p>技能操作： 密集練習 CPR（心肺復甦術）、AED 操作、創傷止血包紮、生命徵象評估及傷患搬運技術。</p></li>
+                        </ul>
+                    </div>
+                    <div class="col-text">
+                        <p>心得與成果</p>
+                        <ul>
+                            <li><p>實力認證： 組員成功通過考核取得 EMT-1 證照，具備在救護車到達前掌握「黃金救命時間」的專業能力。</p></li>
+                            <li><p>落實行動： 我們將救護知識轉化為專題的核心內容，證明高中生也能透過專業訓練，落實「自救救人」的民防精神。</p></li>
+                        </ul>
                     </div>
                 </div>
             </section>
@@ -333,19 +110,29 @@
             <!-- 第三段落 -->
             <section class="content-section fade-up">
                 <div class="section-header">
-                    <h2>緊急醫療訓練</h2>
+                    <h2>團隊心得與省思：向世界傳遞台灣的韌性</h2>
                 </div>
                 <div class="row">
                     <div class="col-text">
-                        <p>擁有止血帶與急救箱是不夠的，必須具備正確的操作知識。我們舉辦針對普通市民的止血訓練 (Stop the Bleed) 與基礎心理急救課程。</p>
-                        <p>在混亂的環境中，心理韌性與基礎醫療能力同樣重要，能有效降低社區的集體恐慌並增加存活機率。</p>
-                    </div>
-                    <div class="col-image">
-                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800" alt="醫療訓練圖">
+                        <p>面對未來氣候變遷與各種複合型災害的挑戰，首當其衝的往往是基層平民。</p>
+                        <p>在這次專題製作中，我們經歷了觀念的震撼教育。從高默防衛的教官身上，我們學到了「不驚慌的實質行動力」；從劉教授的訪談中，我們懂得了「照顧好自己就是最大貢獻的居家堡壘」。</p>
+                        <p>原來，民防不是壯漢的專利，從準備一份寵物避難包、學會止血包紮的女性，到在家備妥慢性病藥的長者，每一位都是守護台灣韌性的英雄。</p>
+                        <p>高默教官受訪時的一句話深深烙印在我們心中：「我希望讓國際知道，台灣有一群人，他們跨越了性別與體能的限制，為了社會安全正在不斷地努力。」</p>
                     </div>
                 </div>
             </section>
 
+            <!-- 第四段落 -->
+            <section class="content-section fade-up">
+                <div class="section-header">
+                    <h2>我們的行動呼籲</h2>
+                </div>
+                <div class="col-text">
+                    <p>『民防』聽起來或許是個遙遠的專業名詞，但在我們深入探訪民間團體與在地社區後，才深刻體會它其實是日常生活的延伸。透過這個專題網站，我們期盼向大眾傳達一個核心價值：安全從來不是理所當然，而是仰賴每一位社區成員共同構築的成果。唯有褪去冷漠，將防災意識化為鄰里間的互助與平時的準備，我們才能為家園編織出最堅實的防護網。</p>
+                    <p>我們深信：</p>
+                    <h3><b>民防不能流於口號與空談，它必須是一種扎根生活的態度——<br>這是對自己生命的負責，更是對在地社區與台灣社會的溫柔守護。</b></h3>
+                </div>
+            </section>
         </div>
     </main>
 
@@ -353,30 +140,6 @@
         <p>&copy; 2024 Taiwan Civilian Association Cyberfair Project.</p>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const navbar = document.getElementById('navbar');
-
-            // 滾動效果
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 100) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-
-            // 進場動畫
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-        });
-    </script>
+<script src="script.js"></script>
 </body>
 </html>
