@@ -1,23 +1,31 @@
-/* script.js */
-
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 選取所有帶有 .fade-up 的元素
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1 // 當元素出現 10% 時觸發
-    };
+    const navbar = document.getElementById('navbar');
+    const menuToggle = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
 
-    const observer = new IntersectionObserver((entries, observer) => {
+    // 1. 手機版選單切換
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    // 2. 滾動效果
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // 3. 進場動畫
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // 動畫只播放一次
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1 });
 
-    const animatedElements = document.querySelectorAll('.fade-up');
-    animatedElements.forEach(el => observer.observe(el));
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 });
