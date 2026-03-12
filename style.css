@@ -207,10 +207,16 @@ hero-title {
     border-radius: 2px;
 } */
 
-.content-section h3{
+.content-section h3 {
     text-align: center;
     font-size: 1.5rem;
     margin-bottom: 20px;
+    /* --- 新增建議 --- */
+    max-width: 800px;      /* 限制寬度，讓長句子的換行更漂亮 */
+    margin-left: auto;     /* 配合 max-width 達成水平置中 */
+    margin-right: auto;    /* 配合 max-width 達成水平置中 */
+    line-height: 1.8;      /* 確保行間距舒適 */
+    color: var(--text-main);
 }
 
 .row {
