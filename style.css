@@ -111,7 +111,7 @@ nav.scrolled .nav-title-sticky {
 /* Hero 區塊 */
 .hero-section {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 1.5fr 0.5fr;
     min-height: 80vh;
     padding: calc(var(--nav-height) + 40px) 5% 60px;
     gap: 40px;
@@ -207,10 +207,16 @@ hero-title {
     border-radius: 2px;
 } */
 
-.content-section h3{
+.content-section h3 {
     text-align: center;
     font-size: 1.5rem;
     margin-bottom: 20px;
+    /* --- 新增建議 --- */
+    max-width: 800px;      /* 限制寬度，讓長句子的換行更漂亮 */
+    margin-left: auto;     /* 配合 max-width 達成水平置中 */
+    margin-right: auto;    /* 配合 max-width 達成水平置中 */
+    line-height: 1.8;      /* 確保行間距舒適 */
+    color: var(--text-main);
 }
 
 .row {
@@ -335,6 +341,55 @@ footer {
     .menu-toggle.active span:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
+}
+
+#nav-links a.active {
+    background-color: #2563eb; 
+    color: #ffffff;           
+    border: 1px solid #2563eb;
+    font-weight: 800;
+}
+
+/* 1. 基礎卡片增加滑鼠手勢 */
+.member-card {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.member-card:hover {
+    transform: translateY(-5px); /* 懸停時稍微浮起，暗示可以點擊 */
+}
+
+/* 2. 彈出層 (Overlay) 的樣式 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85); /* 背景變暗 */
+    display: none; /* 預設隱藏 */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    cursor: zoom-out;
+}
+
+/* 3. 彈出的內容動畫 */
+.modal-content {
+    max-width: 80%;
+    max-height: 80%;
+    transform: scale(0.5);
+    transition: transform 0.3s ease;
+}
+
+/* 當 active 時顯示 */
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
 }
 /* --- 語言選擇頁面樣式 --- */
 .language-overlay {
