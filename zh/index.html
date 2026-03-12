@@ -681,66 +681,6 @@ nav.scrolled .nav-title-sticky {
                 });
             });
         });
-
-        // 3. 點擊成員卡片彈出詳情卡片功能
-const modalOverlay = document.getElementById('modalOverlay');
-const modalClose = document.getElementById('modalClose');
-const memberCards = document.querySelectorAll('.member-card');
-
-// 準備彈出層內的各個元素
-const modalImg = document.getElementById('modalImg');
-const modalName = document.getElementById('modalName');
-const modalRole = document.getElementById('modalRole');
-const modalDesc = document.getElementById('modalDesc');
-
-// 定義每個成員的詳細介紹文字 (選配，如果你的卡片裡原本沒有介紹文字的話)
-const memberDescriptions = {
-    '成員 A': '這裡是成員 A 的詳細介紹。作為專案統籌，他們負責整體進度的規劃、跨部門溝通，以及確保專案核心理念的落實。對民防議題有深刻的洞察。',
-    '成員 B': '這裡是成員 B 的詳細介紹。專注於資料收集與分析，他們親自走訪多個民防組織，整理出大量的訪談紀錄與文獻資料，為專案提供紮實的論點支撐。',
-    '成員 C': '這裡是成員 C 的詳細介紹。視覺設計是他們的強項，從 Logo 設計、網頁排版到資訊圖表，都展現了專業的視覺語彙，讓生硬的民防資訊變得易於理解。'
-};
-
-memberCards.forEach(card => {
-    card.addEventListener('click', () => {
-        // A. 抓取被點擊卡片內的現有資訊
-        const name = card.querySelector('.member-name').innerText;
-        const role = card.querySelector('.member-role').innerText;
-        const imgSrc = card.querySelector('.member-image').src;
-        
-        // B. 將抓到的資訊塞進彈出卡片中
-        modalName.innerText = name;
-        modalRole.innerText = role;
-        modalImg.src = imgSrc;
-        
-        // C. 如果有預設的介紹文字，也塞進去 (如果沒有就用預設的)
-        if (memberDescriptions[name]) {
-            modalDesc.innerText = memberDescriptions[name];
-        } else {
-            modalDesc.innerText = '這裡是這位成員的預設詳細介紹文字。你可以根據需要隨時修改這段文字。';
-        }
-        
-        // D. 顯示詳情層
-        modalOverlay.classList.add('active');
-        // 防止背景捲動
-        document.body.style.overflow = 'hidden';
-    });
-});
-
-// 關閉功能 (點擊叉叉)
-modalClose.addEventListener('click', () => {
-    modalOverlay.classList.remove('active');
-    document.body.style.overflow = 'auto';
-});
-
-// 關閉功能 (點擊黑色背景)
-modalOverlay.addEventListener('click', (e) => {
-    // 確保點擊的是背景本身，而不是卡片內部
-    if (e.target === modalOverlay) {
-        modalOverlay.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
-});
-
     </script>
 </body>
 </html>
