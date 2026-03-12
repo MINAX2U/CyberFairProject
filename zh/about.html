@@ -32,10 +32,7 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="hero-image-container fade-up">
-                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=2000" alt="MEMBERS">
-            </div>
+
 
             <div class="outline-container fade-up">
                 <h2 class="outline-title">成員介紹</h2>
@@ -127,6 +124,27 @@
         </div>
         <p>&copy; 2026 Taiwan Civilian Association Cyberfair Project.</p>
     </footer>
+
+    <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-card">
+        <button class="modal-close" id="modalClose">&times;</button>
+        
+        <div class="modal-body">
+            <div class="modal-image-container">
+                <img src="" alt="成員照片" id="modalImg">
+            </div>
+            
+            <div class="modal-text-content">
+                <h3 class="modal-name" id="modalName">成員姓名</h3>
+                <p class="modal-role" id="modalRole">職位名稱</p>
+                <div class="modal-divider"></div>
+                <p class="modal-desc" id="modalDesc">
+                    這裡是成員的詳細介紹文字。你可以描述他們在專案中的具體貢獻、專業背景，或是對民防議題的看法。
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="../script.js"></script>
 </body>
