@@ -255,6 +255,15 @@ hero-title {
     transform: scale(1.02);
 }
 
+.reflect-img {
+    align-items: start;
+    overflow: hidden;
+}
+
+.reflect-img .col-image {
+    box-sizing: border-box;
+} 
+
 /* 動畫 */
 .fade-up {
     opacity: 0;
