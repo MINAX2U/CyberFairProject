@@ -71,6 +71,49 @@
     white-space: nowrap;
 }
 
+/* 1. 基礎卡片增加滑鼠手勢 */
+.member-card {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.member-card:hover {
+    transform: translateY(-5px); /* 懸停時稍微浮起，暗示可以點擊 */
+}
+
+/* 2. 彈出層 (Overlay) 的樣式 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85); /* 背景變暗 */
+    display: none; /* 預設隱藏 */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    cursor: zoom-out;
+}
+
+/* 3. 彈出的內容動畫 */
+.modal-content {
+    max-width: 80%;
+    max-height: 80%;
+    transform: scale(0.5);
+    transition: transform 0.3s ease;
+}
+
+/* 當 active 時顯示 */
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+
 /* 滑動後才顯現 */
 nav.scrolled .nav-title-sticky {
     opacity: 1;
@@ -379,6 +422,152 @@ nav.scrolled .nav-title-sticky {
                 transform: translateY(-8px) rotate(-45deg);
             }
         }
+
+        /* --- 新的彈出詳情卡片 (Modal Card) 樣式 --- */
+
+/* 1. 彈出層背景 - 保持不變，但確保居中 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.9);
+    display: none; /* 預設隱藏 */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 20px;
+    opacity: 0;
+    backdrop-filter: blur(8px); /* 增加背景模糊，讓焦點完全集中在卡片 */
+    transition: opacity 0.4s ease;
+}
+
+/* 當 active 時顯示背景 */
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+/* 2. 彈出的卡片容器 */
+.modal-card {
+    background: #ffffff;
+    width: 90%;
+    max-width:  1000px; /* 最大寬度 */
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    position: relative;
+    overflow: hidden; /* 確保圓角裁切 */
+    
+/* 改良入場動畫：使用更優雅的貝茲曲線 */
+    transform: scale(0.85) translateY(40px);
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); /* 帶點回彈的感覺 */
+}
+
+/* 當 active 時，卡片動畫到位 */
+.modal-overlay.active .modal-card {
+    transform: scale(1) translateY(0);
+}
+
+/* 3. 關閉按鈕 */
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.1);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 24px;
+    color: #0f172a;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background 0.3s;
+}
+
+.modal-close:hover {
+    background: rgba(0,0,0,0.2);
+}
+
+/* 4. 卡片主體排版 (使用 Grid) */
+.modal-body {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* 左側圖片，右側文字 */
+}
+
+/* 5. 圖片區塊 */
+.modal-image-container {
+    width: 100%;
+    height: 100%;
+    min-height: 400px; /* 確保有一定高度 */
+    overflow: hidden;
+}
+
+.modal-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 圖片填滿但不變形 */
+}
+
+/* 6. 文字區塊 */
+.modal-text-content {
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal-name {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #0f172a;
+    line-height: 1.1;
+    margin-bottom: 8px;
+}
+
+.modal-role {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent); /* 使用你的主色藍色 */
+    margin-bottom: 20px;
+}
+
+.modal-divider {
+    width: 60px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 2px;
+    margin-bottom: 30px;
+}
+
+.modal-desc {
+    font-size: 1rem;
+    color: var(--text-body);
+    line-height: 1.8;
+}
+
+/* 手機版響應式排版 */
+@media (max-width: 768px) {
+    .modal-body {
+        grid-template-columns: 1fr; /* 改為單欄排版 */
+    }
+    
+    .modal-image-container {
+        min-height: 250px; /* 手機版圖片高度縮小 */
+    }
+    
+    .modal-text-content {
+        padding: 40px 30px;
+    }
+    
+    .modal-name {
+        font-size: 2rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -433,7 +622,7 @@ nav.scrolled .nav-title-sticky {
                     <div class="member-card">
                         <div class="member-name">成員 A</div>
                         <div class="member-role">專案統籌</div>
-                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=2000" class="member-image">
+                            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=2000" class="member-image">
                     </div>
                     <div class="member-card">
                         <div class="member-name">成員 B</div>
@@ -473,6 +662,27 @@ nav.scrolled .nav-title-sticky {
     <footer>
         <p>&copy; 2026 Taiwan Civilian Association Cyberfair Project.</p>
     </footer>
+
+    <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-card">
+        <button class="modal-close" id="modalClose">&times;</button>
+        
+        <div class="modal-body">
+            <div class="modal-image-container">
+                <img src="" alt="成員照片" id="modalImg">
+            </div>
+            
+            <div class="modal-text-content">
+                <h3 class="modal-name" id="modalName">成員姓名</h3>
+                <p class="modal-role" id="modalRole">職位名稱</p>
+                <div class="modal-divider"></div>
+                <p class="modal-desc" id="modalDesc">
+                    這裡是成員的詳細介紹文字。你可以描述他們在專案中的具體貢獻、專業背景，或是對民防議題的看法。
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -539,6 +749,66 @@ nav.scrolled .nav-title-sticky {
                 });
             });
         });
+
+        // 3. 點擊成員卡片彈出詳情卡片功能
+const modalOverlay = document.getElementById('modalOverlay');
+const modalClose = document.getElementById('modalClose');
+const memberCards = document.querySelectorAll('.member-card');
+
+// 準備彈出層內的各個元素
+const modalImg = document.getElementById('modalImg');
+const modalName = document.getElementById('modalName');
+const modalRole = document.getElementById('modalRole');
+const modalDesc = document.getElementById('modalDesc');
+
+// 定義每個成員的詳細介紹文字 (選配，如果你的卡片裡原本沒有介紹文字的話)
+const memberDescriptions = {
+    '成員 A': '這裡是成員 A 的詳細介紹。作為專案統籌，他們負責整體進度的規劃、跨部門溝通，以及確保專案核心理念的落實。對民防議題有深刻的洞察。',
+    '成員 B': '這裡是成員 B 的詳細介紹。專注於資料收集與分析，他們親自走訪多個民防組織，整理出大量的訪談紀錄與文獻資料，為專案提供紮實的論點支撐。',
+    '成員 C': '這裡是成員 C 的詳細介紹。視覺設計是他們的強項，從 Logo 設計、網頁排版到資訊圖表，都展現了專業的視覺語彙，讓生硬的民防資訊變得易於理解。'
+};
+
+memberCards.forEach(card => {
+    card.addEventListener('click', () => {
+        // A. 抓取被點擊卡片內的現有資訊
+        const name = card.querySelector('.member-name').innerText;
+        const role = card.querySelector('.member-role').innerText;
+        const imgSrc = card.querySelector('.member-image').src;
+        
+        // B. 將抓到的資訊塞進彈出卡片中
+        modalName.innerText = name;
+        modalRole.innerText = role;
+        modalImg.src = imgSrc;
+        
+        // C. 如果有預設的介紹文字，也塞進去 (如果沒有就用預設的)
+        if (memberDescriptions[name]) {
+            modalDesc.innerText = memberDescriptions[name];
+        } else {
+            modalDesc.innerText = '這裡是這位成員的預設詳細介紹文字。你可以根據需要隨時修改這段文字。';
+        }
+        
+        // D. 顯示詳情層
+        modalOverlay.classList.add('active');
+        // 防止背景捲動
+        document.body.style.overflow = 'hidden';
+    });
+});
+
+// 關閉功能 (點擊叉叉)
+modalClose.addEventListener('click', () => {
+    modalOverlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+});
+
+// 關閉功能 (點擊黑色背景)
+modalOverlay.addEventListener('click', (e) => {
+    // 確保點擊的是背景本身，而不是卡片內部
+    if (e.target === modalOverlay) {
+        modalOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+});
+
     </script>
 </body>
 </html>
