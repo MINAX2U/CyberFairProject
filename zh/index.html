@@ -311,56 +311,6 @@ nav.scrolled .nav-title-sticky {
         } */
 
         /* 成員介紹樣式區塊 */
-        .member-grid {
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-            gap: 20px;
-        }
-
-        .member-card {
-            background: white; 
-            padding: 24px; 
-            border-radius: 16px; 
-            border: 1px solid var(--border);
-            transition: 0.3s ease;
-            text-align: left;
-        }
-
-        .member-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px -5px rgba(0,0,0,0.05);
-            border-color: var(--accent);
-        }
-
-        .member-avatar {
-            width: 64px; 
-            height: 64px; 
-            background: #e2e8f0; 
-            border-radius: 50%; 
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #94a3b8;
-            font-size: 1.5rem;
-        }
-
-        .member-name {
-            color: var(--text-main);
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 4px;
-        }
-
-        .member-role {
-            font-size: 0.85rem;
-            color: var(--text-body);
-            font-weight: 500;
-        }
-
-        .member-image {
-            max-width: 100%;
-        }
 
         /* 動畫類別 */
         .fade-up {
@@ -593,12 +543,15 @@ nav.scrolled .nav-title-sticky {
         <a href="defence.html">高默 S.T.A</a>
         <a href="ilovelinux.html">民防運作與行動</a>
         <a href="reflect.html">行動與省思</a>
+        <a href="about.html">成員介紹</a>
+        <a href="bibliography.html">參考文獻</a>
     </div>
 </nav>
 
     <main>
         <section class="hero-section">
             <div class="hero-image-container fade-up" id="heroTarget">
+                <img src="../index-hero.jpg" alt="專案背景">
                 <img src="../pic/resilient_taiwan.jpg" alt="專案背景">
                 <div class="hero-overlay">
                     <h3 class="hero-title">韌性台灣：從你我開始的民防新視角<h3>
@@ -608,12 +561,6 @@ nav.scrolled .nav-title-sticky {
             <div class="outline-container fade-up">
                 <p>「民防」顧名思義即是全民國防，台灣民防協會是有一群有志的愛國志士所組成的非政府組織（NGO) 旨在提升台灣社會整體的「韌性」。當天然災害（如地震、颱風）降臨或軍事衝突觸發時，使一般民眾具備自我保護與互助的能力，而非只能仰賴政府的力量。</p>
                 <!-- <p class="outline-desc">點擊章節快速跳轉：</p> -->
-                
-                
-
-                <a href="#content-start" class="scroll-hint">
-                    或向下滑動探索 <span>→</span>
-                </a>
             </div>
         </section>
 
@@ -670,6 +617,10 @@ nav.scrolled .nav-title-sticky {
     </main>
 
     <footer>
+        <div>
+            <a href="http://globalschoolnet.org/gsncf/index.cfm"><img src="/cf2026.jpg" class="footer-image"></a>
+            <a href="https://www.clsh.ntpc.edu.tw"><img src="/school.png" class="footer-image"></a>
+        </div>
         <p>&copy; 2026 Taiwan Civilian Association Cyberfair Project.</p>
     </footer>
 
