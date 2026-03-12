@@ -253,56 +253,6 @@ nav.scrolled .nav-title-sticky {
         } */
 
         /* 成員介紹樣式區塊 */
-        .member-grid {
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-            gap: 20px;
-        }
-
-        .member-card {
-            background: white; 
-            padding: 24px; 
-            border-radius: 16px; 
-            border: 1px solid var(--border);
-            transition: 0.3s ease;
-            text-align: left;
-        }
-
-        .member-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px -5px rgba(0,0,0,0.05);
-            border-color: var(--accent);
-        }
-
-        .member-avatar {
-            width: 64px; 
-            height: 64px; 
-            background: #e2e8f0; 
-            border-radius: 50%; 
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #94a3b8;
-            font-size: 1.5rem;
-        }
-
-        .member-name {
-            color: var(--text-main);
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 4px;
-        }
-
-        .member-role {
-            font-size: 0.85rem;
-            color: var(--text-body);
-            font-weight: 500;
-        }
-
-        .member-image {
-            max-width: 100%;
-        }
 
         /* 動畫類別 */
         .fade-up {
@@ -388,13 +338,15 @@ nav.scrolled .nav-title-sticky {
         <a href="defence.html">高默防衛</a>
         <a href="ilovelinux.html" class="active">民防運作與行動</a>
         <a href="reflect.html">行動與省思</a>
+            <a href="about.html">成員介紹</a>
+        <a href="bibliography.html" class="active">參考文獻</a>
     </div>
 </nav>
 
     <main>
         <section class="hero-section">
             <div class="hero-image-container fade-up" id="heroTarget">
-                <img src="https://cdn.discordapp.com/attachments/1190944745925656577/1481270498183741470/604527617366556845.jpg?ex=69b2b427&is=69b162a7&hm=50356731d932bd5690d985141e77236487992ac958944c3303384748a12e2556" alt="專案背景">
+                <img src="../index-hero.jpg" alt="專案背景">
                 <div class="hero-overlay">
                     <h3 class="hero-title">韌性台灣：從你我開始的民防新視角<h3>
                 </div>
@@ -403,12 +355,6 @@ nav.scrolled .nav-title-sticky {
             <div class="outline-container fade-up">
                 <p>「民防」顧名思義即是全民國防，台灣民防協會是有一群有志的愛國志士所組成的非政府組織（NGO) 旨在提升台灣社會整體的「韌性」。當天然災害（如地震、颱風）降臨或軍事衝突觸發時，使一般民眾具備自我保護與互助的能力，而非只能仰賴政府的力量。</p>
                 <!-- <p class="outline-desc">點擊章節快速跳轉：</p> -->
-                
-                
-
-                <a href="#content-start" class="scroll-hint">
-                    或向下滑動探索 <span>→</span>
-                </a>
             </div>
         </section>
 
@@ -420,51 +366,15 @@ nav.scrolled .nav-title-sticky {
                 <p>在本次專題中，我們團隊親自走訪了「台灣民防協會」的學者專家與「高默防衛（S.T.A）」民間訓練團體。透過深度訪談與實地觀察，我們打破了過去「民防等於軍警專利」的迷思。我們發現：當天然災害（如地震、颱風）降臨，或發生重大無預警危機時，民防不僅是止血帶與無線電，它更包含了弱勢照顧、物資分配與金融避險。它能賦予一般民眾自我保護與相互救援的能力，讓公民社會成為政府之外最強大的支撐網絡。</p>
             </section>
 
-            <section id="about" class="fade-up">
-                <h2>成員介紹</h2>
-                <!-- 修改後的成員卡片結構，使用了樣式類別 -->
-                <div class="member-grid">
-                    <div class="member-card">
-                        <div class="member-name">成員 A</div>
-                        <div class="member-role">專案統籌</div>
-                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=2000" class="member-image">
-                    </div>
-                    <div class="member-card">
-                        <div class="member-name">成員 B</div>
-                        <div class="member-role">資料收集</div>
-                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=2000" class="member-image">
-                    </div>
-                    <div class="member-card">
-                        <div class="member-name">成員 C</div>
-                        <div class="member-role">視覺設計</div>
-                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=2000" class="member-image">
-                    </div>
-                </div>
-
-                <div class="member-grid">
-                    <div class="member-card">
-                        <div class="member-name">成員 A</div>
-                        <div class="member-role">專案統籌</div>
-                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=2000" class="member-image">
-                    </div>
-                    <div class="member-card">
-                        <div class="member-name">成員 B</div>
-                        <div class="member-role">資料收集</div>
-                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=2000" class="member-image">
-                    </div>
-                    <div class="member-card">
-                        <div class="member-name">成員 C</div>
-                        <div class="member-role">視覺設計</div>
-                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=2000" class="member-image">
-                    </div>
-                </div>
-            </section>
-
             <h3 class="fade-up">「在充滿未知與變數的時代，『安全感』不能只依靠政府給的承諾，更應該從『自己』著手準備。民防，是全社會韌性的昇華——從急救止血到避難引導，從物資準備到資訊傳遞。這是一場關於全社會的集體行動，指引我們在混亂中依然能保持冷靜，成為那道黑暗中的光。」 —— 團隊成員</h3>
         </div>
     </main>
 
     <footer>
+        <div>
+            <a href="http://globalschoolnet.org/gsncf/index.cfm"><img src="/cf2026.jpg" class="footer-image"></a>
+            <a href="https://www.clsh.ntpc.edu.tw"><img src="/school.png" class="footer-image"></a>
+        </div>
         <p>&copy; 2026 Taiwan Civilian Association Cyberfair Project.</p>
     </footer>
 
