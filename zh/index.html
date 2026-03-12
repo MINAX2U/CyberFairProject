@@ -53,7 +53,12 @@
             z-index: 2000;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
+#nav-links a.active {
+    background-color: #000000; 
+    color: #ffffff;           
+    border: 1px solid #000000;
+    font-weight: 800;
+}
         .nav-title-sticky {
     position: relative; /* 關鍵：改回 relative，它才會佔據左側位置把按鈕推開 */
     left: 0;           /* 確保沒有偏移 */
@@ -385,9 +390,9 @@ nav.scrolled .nav-title-sticky {
     </div>
 
     <div class="nav-external-links" id="nav-links">
-        <a href="index.html">首頁</a>
+        <a href="index.html" class="active">首頁</a>
         <a href="defence.html">高默防衛</a>
-        <a href="ilovelinux.html" class="active">民防運作與行動</a>
+        <a href="ilovelinux.html">民防運作與行動</a>
         <a href="reflect.html">行動與省思</a>
     </div>
 </nav>
