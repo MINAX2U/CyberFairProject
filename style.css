@@ -257,10 +257,10 @@ hero-title {
 
 .reflect-img {
     align-items: start;
-    overflow: hidden;
 }
 
 .reflect-img .col-image {
+    margin: 1rem 0 1rem 0;
     box-sizing: border-box;
 } 
 
