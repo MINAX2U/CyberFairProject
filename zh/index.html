@@ -71,6 +71,15 @@
     white-space: nowrap;
 }
 
+.quote-text {
+    text-align: center;
+    max-width: 950px;  /* 限制寬度可以讓長句子換行更美觀 */
+    margin: 60px auto; /* 左右 auto 是置中的關鍵，上下 60px 增加呼吸感 */
+    line-height: 1.8;
+    color: var(--text-main);
+    font-style: italic; /* 既然是語錄，加一點斜體更有質感 */
+}
+
 /* 1. 基礎卡片增加滑鼠手勢 */
 .member-card {
     cursor: pointer;
@@ -602,10 +611,8 @@ nav.scrolled .nav-title-sticky {
                 </div>
             </section>
 
-            <h3 class="fade-up">
-        <h3>「在充滿未知與變數的時代，『安全感』不能只依靠政府給的承諾，更應該從『自己』著手準備。民防，是全社會韌性的昇華——從急救止血到避難引導，從物資準備到資訊傳遞。這是一場關於全社會的集體行動，指引我們在混亂中依然能保持冷靜，成為那道黑暗中的光。」</h3>
-    </section>
-</div>
+            <h3 class="fade-up quote-text">「在充滿未知與變數的時代，『安全感』不能只依靠政府給的承諾，更應該從『自己』著手準備。民防，是全社會韌性的昇華——從急救止血到避難引導，從物資準備到資訊傳遞。這是一場關於全社會的集體行動，指引我們在混亂中依然能保持冷靜，成為那道黑暗中的光。」</h3>
+        </div>
     </main>
 
     <footer>
