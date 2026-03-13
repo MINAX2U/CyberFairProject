@@ -264,10 +264,16 @@
         }
 
         .section-image {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.4s ease;
             border-radius: 20px;
             width: 100%;
             object-fit: cover;
             margin: 1rem 0.5rem 2rem 0.5rem;
+        }
+
+        .section-col img:hover {
+            transform: scale(1.02);
         }
 
         section {
