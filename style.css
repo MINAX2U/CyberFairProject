@@ -3,12 +3,13 @@
    ========================================= */
 :root {
     --bg-color: #f8fafc;    
-    --card-bg: #ffffff;    
-    --text-main: #0f172a;  
-    --text-body: #475569;  
-    --accent: #2563eb;     
+    --card-bg: #ffffff;     
+    --text-main: #0f172a;   
+    --text-body: #475569;   
+    --accent: #2563eb;      
     --border: rgba(0, 0, 0, 0.06);
     --nav-height: 80px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -21,8 +22,12 @@
 body {
     background-color: var(--bg-color);
     color: var(--text-body);
-    line-height: 1.8;
+    line-height: 1.7;
     overflow-x: hidden;
+}
+
+p {
+    font-size: 120%;
 }
 
 /* =========================================
@@ -42,7 +47,7 @@ nav {
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     z-index: 2000;
-    transition: all 0.4s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logo {
@@ -55,14 +60,16 @@ nav {
 }
 
 .nav-title-sticky {
-    position: relative;
+    position: relative; /* 關鍵：改回 relative，它才會佔據左側位置把按鈕推開 */
+    left: 0;
+    transform: none;
     opacity: 0;
-    font-weight: 800;
-    font-size: 1.1rem;
+    visibility: hidden;
+    font-weight: 900;
+    font-size: 1.5rem;
     color: var(--accent);
     transition: opacity 0.3s ease;
     white-space: nowrap;
-    visibility: hidden;
 }
 
 nav.scrolled .nav-title-sticky {
@@ -99,7 +106,9 @@ nav.scrolled .nav-title-sticky {
     font-weight: 800;
 }
 
-/* 語言切換按鈕系列 */
+/* =========================================
+   3. 語言切換系列 (Language Buttons & Overlay)
+   ========================================= */
 #lang-btn, .nav-lang-btn {
     margin-left: 15px; 
     padding: 6px 12px; 
@@ -133,6 +142,48 @@ nav.scrolled .nav-title-sticky {
     color: #fff;
 }
 
+.language-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0f172a;
+    color: white;
+    text-align: center;
+    z-index: 9999;
+}
+
+.lang-box p {
+    margin-bottom: 25px;
+    color: #cbd5e1;
+}
+
+.btn-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.lang-choice {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 2px solid var(--accent);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.lang-choice:hover {
+    background: var(--accent);
+    transform: translateY(-3px);
+}
+
 /* 手機版三橫線按鈕 */
 .menu-toggle {
     display: none;
@@ -152,12 +203,12 @@ nav.scrolled .nav-title-sticky {
 }
 
 /* =========================================
-   3. Hero 區塊 (Hero Section)
+   4. Hero 與大綱區塊 (Hero & Outline)
    ========================================= */
 .hero-section {
     display: grid;
     grid-template-columns: 1.5fr 0.5fr;
-    min-height: 80vh;
+    min-height: 90vh;
     padding: calc(var(--nav-height) + 40px) 5% 60px;
     gap: 40px;
     align-items: center;
@@ -187,13 +238,18 @@ nav.scrolled .nav-title-sticky {
     color: white;
 }
 
-hero-title {
+.hero-title {
     font-size: 3.5rem;
     font-weight: 900;
     line-height: 1.1;
     margin-bottom: 10px;
     transition: transform 0.1s linear, opacity 0.1s linear;
     transform-origin: top left; 
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    opacity: 0.9;
 }
 
 .outline-container {
@@ -203,7 +259,7 @@ hero-title {
 }
 
 .outline-title {
-    font-size: 3rem;
+    font-size: 5rem;
     font-weight: 900;
     color: var(--text-main);
     line-height: 1;
@@ -213,12 +269,82 @@ hero-title {
 .outline-desc {
     font-size: 1.25rem;
     color: var(--text-body);
+    margin-bottom: 30px;
     max-width: 400px;
 }
 
+.outline-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.outline-links a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.outline-links a:hover {
+    transform: translateY(-3px);
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+}
+
+.scroll-hint {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--accent);
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
 /* =========================================
-   4. 內容區塊與排版 (Content & Layout)
+   5. 內容區塊與排版 (Content Layouts)
+   ※ 兼容兩邊不同的 Class 命名規則
    ========================================= */
+/* 風格 A (從第一份 CSS 引入) */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 24px;
+}
+
+.section-col {
+    display: flex;
+    vertical-align: top;
+}
+
+.section-image {
+    border-radius: 20px;
+    width: 100%;
+    object-fit: cover;
+    margin: 1rem 0.5rem 2rem 0.5rem;
+}
+
+section { margin-bottom: 120px; }
+
+h2 {
+    font-size: 2.5rem;
+    color: var(--text-main);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* 風格 B (從第二份 CSS 引入) */
 .content-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -241,6 +367,7 @@ hero-title {
     position: relative;
     display: inline-block;
     padding-bottom: 15px;
+    margin-bottom: 0; /* 覆寫風格 A 的 h2 */
 }
 
 .content-section h3 {
@@ -260,13 +387,9 @@ hero-title {
     gap: 60px;
 }
 
-.row.reverse {
-    flex-direction: row-reverse;
-}
+.row.reverse { flex-direction: row-reverse; }
 
-.col-text {
-    flex: 1;
-}
+.col-text { flex: 1; }
 
 .col-text p {
     font-size: 1.15rem;
@@ -288,21 +411,26 @@ hero-title {
     object-fit: cover;
 }
 
-.col-image img:hover {
-    transform: scale(1.02);
-}
+.col-image img:hover { transform: scale(1.02); }
 
-.reflect-img {
-    align-items: start;
-}
-
+.reflect-img { align-items: start; }
 .reflect-img .col-image {
     margin: 1rem 0;
     box-sizing: border-box;
 }
 
+/* 語錄字體區塊 */
+.quote-text {
+    text-align: center;
+    max-width: 950px; 
+    margin: 60px auto; 
+    line-height: 1.8;
+    color: var(--text-main);
+    font-style: italic; 
+}
+
 /* =========================================
-   5. 成員與卡片 (Members Grid)
+   6. 成員與卡片 (Members Grid)
    ========================================= */
 .member-grid {
     display: grid; 
@@ -321,8 +449,8 @@ hero-title {
 }
 
 .member-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 20px -5px rgba(0,0,0,0.05);
+    transform: translateY(-5px); /* 保留滑鼠上浮暗示 */
+    box-shadow: 0 12px 20px -5px rgba(0,0,0,0.05); /* 保留卡片陰影 */
     border-color: var(--accent);
 }
 
@@ -358,10 +486,8 @@ hero-title {
 }
 
 /* =========================================
-   6. 彈出視窗系列 (Modals & Overlays)
+   7. 彈出視窗系列 (Modals & Overlays)
    ========================================= */
-
-/* 基礎 Modal 背景 */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -384,7 +510,6 @@ hero-title {
     opacity: 1;
 }
 
-/* 成員詳情卡片 */
 .modal-card {
     background: #ffffff;
     width: 100%;
@@ -474,51 +599,8 @@ hero-title {
     line-height: 1.8;
 }
 
-/* 語言選擇初始遮罩 */
-.language-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #0f172a;
-    color: white;
-    text-align: center;
-    z-index: 9999;
-}
-
-.lang-box p {
-    margin-bottom: 25px;
-    color: #cbd5e1;
-}
-
-.btn-group {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-}
-
-.lang-choice {
-    display: inline-block;
-    padding: 12px 30px;
-    border: 2px solid var(--accent);
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 8px;
-    transition: 0.3s;
-}
-
-.lang-choice:hover {
-    background: var(--accent);
-    transform: translateY(-3px);
-}
-
 /* =========================================
-   7. 功能性輔助類別 (Utility Classes)
+   8. 功能性輔助類別與動畫 (Utilities & Animations)
    ========================================= */
 .fade-up {
     opacity: 0;
@@ -539,7 +621,7 @@ hero-title {
 }
 
 /* =========================================
-   8. 頁尾 (Footer)
+   9. 頁尾 (Footer)
    ========================================= */
 footer {
     padding: 60px 5%;
@@ -548,9 +630,7 @@ footer {
     text-align: center;
 }
 
-.footer-logo {
-    margin-bottom: 1rem;
-}
+.footer-logo { margin-bottom: 1rem; }
 
 .footer-image {
     max-height: 6rem;
@@ -560,7 +640,7 @@ footer {
 }
 
 /* =========================================
-   9. 響應式設計 (Media Queries)
+   10. 響應式設計 (Media Queries)
    ========================================= */
 
 /* 平板尺寸 (1024px) */
@@ -570,6 +650,7 @@ footer {
         text-align: center;
     }
     .outline-container { align-items: center; }
+    .outline-links, .nav-external-links { justify-content: center; }
     .hero-title { font-size: 2.5rem; }
     .outline-title { font-size: 4rem; }
     .row, .row.reverse {
@@ -615,7 +696,7 @@ footer {
         width: fit-content;
     }
 
-    /* 三橫線動畫 */
+    /* 三橫線變叉叉動畫 */
     .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .menu-toggle.active span:nth-child(2) { opacity: 0; }
     .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
