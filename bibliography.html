@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>專案詳情 | 台灣民團協會</title>
+    <title class="lang" data-zh="專案詳情 | 台灣民團協會" data-en="Project Details | Taiwan Civil Defense Association">專案詳情 | 台灣民團協會</title>
     <!-- 引入 Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
     <link href="/style.css" rel="stylesheet">
@@ -22,10 +22,10 @@
 
         <div class="nav-external-links" id="nav-links">
             <a href="index.html" class="lang" data-zh="首頁" data-en="Home">首頁</a>
-            <a href="defence.html" class="lang" data-zh="高默 S.T.A" data-en="High Mute S.T.A">高默 S.T.A</a>
-            <a href="ilovelinux.html" class="lang" data-zh="民防運作與行動" data-en="Civil Defense Operations and Actions">民防運作與行動</a>
+            <a href="defence.html" class="lang" data-zh="高默 S.T.A" data-en="S.T.A Defense">高默 S.T.A</a>
+            <a href="ilovelinux.html" class="lang" data-zh="民防運作與行動" data-en="Operations in Action">民防運作與行動</a>
             <a href="reflect.html" class="lang" data-zh="行動與省思" data-en="Actions and Reflections">行動與省思</a>
-            <a href="about.html" class="lang" data-zh="成員介紹" data-en="Member Introduction">成員介紹</a>
+            <a href="about.html" class="lang" data-zh="成員介紹" data-en="About Us">成員介紹</a>
             <a href="bibliography.html" class="active lang" data-zh="參考文獻" data-en="Bibliography">參考文獻</a>
             <button id="lang-btn" class="nav-lang-btn">EN</button>
         </div>
@@ -33,9 +33,15 @@
 
     <main>
         <!-- Hero Section -->
-        <section style="min-height: 50vh;padding: calc(var(--nav-height) + 40px) 5% 60px; gap: 40px; align-items: center;">
-            <h2 class="outline-title lang" data-zh="參考文獻" data-en="Bibliography" style="text-align: center;">參考文獻</h2>
-        </section>
+<section style="
+    min-height: 30vh; /* 縮小高度，避免畫面太空 */
+    padding-top: var(--nav-height); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center;">
+    <h2 class="outline-title lang" data-zh="參考文獻" data-en="Bibliography" style="font-size: 4rem; margin: 0;">參考文獻</h2>
+</section>
 
         <!-- 圖文並茂的內文 -->
         <div class="content-container">
