@@ -183,8 +183,8 @@ document.addEventListener('DOMContentLoaded', () => {
             en: 'Wang Bowen'
         },
         '孫晟棋': {
-            zh: '孫晟棋',
-            en: 'Sun Shengqi'
+            zh: '在參加這次網界博覽會之後，除了學到許多與人溝通的技巧之外，原本我只對網頁設計有點理論上的認識，現在終於有機會把這些知識應用到實際的作品中，雖然這過程中十分累人，但是網站在完成之後的喜悅，讓我覺得一切都是值得的！',
+            en: 'After participating in this Web Expo, not only did I learn a lot of communication skills, but I also finally had the chance to apply my theoretical knowledge of web design to a real-world project. Although the process was exhausting, the joy I felt upon completing the website made it all worthwhile!'
         }
     };
 
