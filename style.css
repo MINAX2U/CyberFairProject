@@ -112,7 +112,6 @@ nav.scrolled .nav-title-sticky {
 #nav-links a.active {
     background: var(--accent);
     color: #fff;
-<<<<<<< HEAD
 }
 
 /* 手機版三橫線按鈕 */
@@ -157,6 +156,23 @@ nav.scrolled .nav-title-sticky {
     object-fit: cover;
 }
 
+.member-grid {
+    display: grid;
+    /* 調整最小寬度為 280px，讓卡片在大螢幕上有合理的寬度 */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 30px; /* 稍微增加間距更有質感 */
+}
+
+.member-image {
+    width: 100%;
+    aspect-ratio: 4 / 5; /* 讓所有照片高度統一 */
+    object-fit: cover;
+    border-radius: 12px;
+    margin-top: 15px;
+}
+
+
+
 .hero-overlay {
     position: absolute;
     bottom: 0;
@@ -165,6 +181,36 @@ nav.scrolled .nav-title-sticky {
     padding: 40px;
     background: linear-gradient(transparent, rgba(0,0,0,0.8));
     color: white;
+}
+
+/* 強制讓標題區塊顯示，不受動畫失敗影響 */
+.section-header {
+text-align: center;
+    margin-bottom: 60px; /* 增加與下方卡片的距離 */
+    /* 💡 確保標題區塊優先顯示，不受動畫失敗影響 */
+    opacity: 1 !important;
+    transform: none !important;
+    width: 100%;
+    display: block;
+}
+
+.section-header h2 {
+font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--text-main);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px; /* 稍微縮小底部分隔線的距離 */
+    margin-bottom: 5px; /* 縮小與下方提示文字的距離 */
+}
+
+.section-subtitle {
+    font-size: 1rem; /* 字體大小，比主標題小 */
+    color: var(--text-body); /* 使用副文本顏色 */
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 15px; /* 與下方卡片的距離 */
+    display: block; /* 確保它換行 */
 }
 
 hero-title {
@@ -377,9 +423,6 @@ footer {
     .menu-toggle.active span:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
-=======
-    border-color: var(--accent);
->>>>>>> 91446070abb9f77716ff999b7a9e4efaa82e907d
 }
 
 #nav-links a.active {
