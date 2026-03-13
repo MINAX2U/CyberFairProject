@@ -249,6 +249,8 @@ hero-title {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     transition: transform 0.4s ease;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
 }
 
 .col-image img:hover {
