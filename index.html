@@ -3,46 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Language Selection | T.C.A</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* 這裡放專屬於入口頁的樣式，避免抓不到外部 CSS */
-        .language-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #0f172a; /* 深藍色背景 */
-            color: white;
-            z-index: 9999;
-        }
-        .lang-box { text-align: center; }
-        .btn-group { margin-top: 30px; display: flex; gap: 20px; }
-        .lang-choice {
-            padding: 15px 40px;
-            border: 2px solid #2563eb; /* 直接寫顏色避免變數失效 */
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: 0.3s;
-        }
-        .lang-choice:hover { background: #2563eb; }
-    </style>
+    <title class="lang" data-zh="台灣民團協會 | 民防首頁" data-en="Taiwan Civil Defense Association | Home">台灣民團協會 | 民防首頁</title>
+    <!-- 引入 Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="../pic/resilient_taiwan.jpg">
+    <link href="/style.css" rel="stylesheet">
 </head>
 <body>
-    <div class="language-overlay">
-        <div class="lang-box">
-            <h1>高默 S.T.A</h1>
-            <p>請選擇語言 / Please select your language</p>
-            <div class="btn-group">
-                <a href="zh/index.html" class="lang-choice">中文</a>
-                <a href="en/index.html" class="lang-choice">English</a>
+<nav id="navbar">
+    <div class="nav-title-sticky lang" data-zh="韌性台灣：從你我開始的民防新視角" data-en="Resilient Taiwan">韌性台灣：從你我開始的民防新視角</div>
+
+    <div class="menu-toggle" id="mobile-menu">
+        <span></span><span></span><span></span>
+    </div>
+
+    <div class="nav-external-links" id="nav-links">
+        <a href="index.html" class="active lang" data-zh="首頁" data-en="Home">首頁</a>
+        <a href="defence.html" class="lang" data-zh="高默 S.T.A" data-en="High Moe S.T.A">高默 S.T.A</a>
+        <a href="ilovelinux.html" class="lang" data-zh="民防運作與行動" data-en="Civil Defense Operations and Actions">民防運作與行動</a>
+        <a href="reflect.html" class="lang" data-zh="行動與省思" data-en="Actions and Reflections">行動與省思</a>
+        <a href="about.html" class="lang" data-zh="成員介紹" data-en="Member Introduction">成員介紹</a>
+        <a href="bibliography.html" class="lang" data-zh="參考文獻" data-en="Bibliography">參考文獻</a>
+        <button id="lang-btn" class="nav-lang-btn">EN</button>
+    </div>
+</nav>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-image-container fade-up" id="heroTarget">
+                <img src="/pic/resilient_taiwan.jpg" alt="專案背景">
+                <div class="hero-overlay">
+                    <h3 class="hero-title lang" data-zh="韌性台灣：從你我開始的民防新視角" data-en="Resilient Taiwan">韌性台灣：從你我開始的民防新視角</h3>
+                </div>
+            </div>
+
+            <div class="outline-container fade-up zh-only">
+                <p>    「民防」顧名思義即是全民國防，台灣民防協會是有一群有志的愛國志士所組成的非政府組織，旨在提升台灣社會整體的「韌性」。當天然災害（如地震、颱風）降臨或軍事衝突觸發時，使一般民眾具備自我保護與互助的能力，而非只能仰賴政府的力量。</p>
+                <!-- <p class="outline-desc">點擊章節快速跳轉：</p> -->
+            </div>
+            <div class="outline-container fade-up en-only">
+                <p>“Civil defense” literally means national defense for all citizens. The Taiwan Civil Defense Association is a non-governmental organization composed of a group of patriotic volunteers, aiming to enhance the overall "resilience" of Taiwanese society. When natural disasters (such as earthquakes and typhoons) occur or military conflicts are triggered, it enables ordinary citizens to have the ability to protect themselves and help each other, rather than relying solely on the government's power.</p>
+                <!-- <p class="outline-desc">Click on the sections for quick navigation:</p> -->
+            </div>
+        </section>
+
+        <div class="container" id="content-start">
+            <section id="whatis" class="fade-up">
+                <h2 class="lang" data-zh="何謂民防" data-en="What is Civil Defense?">何謂民防</h2>
+                <div class="zh-only">
+                    <p>「民防」顧名思義，它是「民間防衛」與「全社會韌性」的具體實踐。</p>
+                    <div class="section-col fade-up">
+                            <img src="/pic/index1.jpg" class="section-image">
+                            <img src="/pic/index2.jpg" class="section-image">
+                    </div>
+                    <p>在本次專題中，我們團隊親自走訪了「台灣民防協會」的學者專家與「高默防衛（S.T.A）」民間訓練團體。透過深度訪談與實地觀察，我們打破了過去「民防等於軍警專利」的迷思。我們發現：當天然災害（如地震、颱風）降臨，或發生重大無預警危機時，民防不僅是止血帶與無線電，它更包含了弱勢照顧、物資分配與金融避險。它能賦予一般民眾自我保護與相互救援的能力，讓公民社會成為政府之外最強大的支撐網絡。</p>
+                    <div class="section-col fade-up">
+                        <img src="/pic/index3.jpg" class="section-image">
+                        <img src="/pic/index4.jpg" class="section-image">
+                    </div>
+                </div>
+                <div class="en-only">
+                    <p>"Civil defense" literally means the concrete practice of "civilian defense" and "societal resilience."</p>
+                    <div class="section-col fade-up">
+                            <img src="/pic/index1.jpg" class="section-image">
+                            <img src="/pic/index2.jpg" class="section-image">
+                    </div>
+                    <p>In this project, our team personally visited scholars and experts from the "Taiwan Civil Defense Association" and the civilian training group "High Moe Defense (S.T.A)." Through in-depth interviews and on-site observations, we broke the previous misconception that "civil defense is a monopoly of the military and police." We found that when natural disasters (such as earthquakes and typhoons) occur or major unforeseen crises happen, civil defense is not just about first aid kits and radios; it also includes caring for vulnerable populations, distributing supplies, and financial hedging. It empowers ordinary citizens with the ability to protect themselves and help each other, making civil society the strongest support network outside of the government.</p>
+                    <div class="section-col fade-up">
+                        <img src="/pic/index3.jpg" class="section-image">
+                        <img src="/pic/index4.jpg" class="section-image">
+                    </div>
+                </div>
+            </section>
+            <div class="fade-up quote-text zh-only">
+                <h3>「在充滿未知與變數的時代，『安全感』不能只依靠政府給的承諾，更應該從『自己』著手準備。民防，是全社會韌性的昇華——從急救止血到避難引導，從物資準備到資訊傳遞。這是一場關於全社會的集體行動，指引我們在混亂中依然能保持冷靜，成為那道黑暗中的光。」</h3>
+            </div>
+            <div class="fade-up quote-text en-only">
+                <h3>"In an era filled with uncertainties and variables, 'a sense of security' cannot rely solely on promises from the government; it should start with 'oneself' preparing. Civil defense is the sublimation of societal resilience—from first aid and bleeding control to evacuation guidance, from supply preparation to information dissemination. This is a collective action for the whole society, guiding us to remain calm in chaos and become a light in the darkness."</h3>
+            </div>
+            <div class="section-col fade-up">
+                <img src="/pic/index5.jpg" class="section-image" style="aspect-ratio: 4 / 3;">
+                <img src="/pic/index6.jpg" class="section-image" style="aspect-ratio: 4 / 3;">
+                <!-- <img src="/pic/index7.jpg" class="section-image"> -->
             </div>
         </div>
-    </div>
+    </main>
+
+    <footer>
+        <div>
+            <a href="http://globalschoolnet.org/gsncf/index.cfm"><img src="/cf2026.jpg" class="footer-image"></a>
+            <a href="https://www.clsh.ntpc.edu.tw"><img src="/school.png" class="footer-image"></a>
+        </div>
+        <p>&copy; 2026 Taiwan Civilian Association Cyberfair Project.</p>
+    </footer>
+
+
+
+    <script src="../script.js"></script>
 </body>
 </html>
