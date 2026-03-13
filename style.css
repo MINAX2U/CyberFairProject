@@ -641,3 +641,75 @@ footer {
         font-size: 2rem;
     }
 }
+
+#lang-btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+#lang-btn:hover {
+    background-color: white !important;
+    color: #333 !important;
+}
+
+/* 如果在手機版選單中，確保按鈕有足夠間距 */
+@media (max-width: 768px) {
+    #lang-btn {
+        margin: 10px 0;
+        width: fit-content;
+    }
+}
+
+#lang-btn {
+    margin-left: 15px;
+    padding: 5px 12px;
+    cursor: pointer;
+    background: transparent;
+    border: 1.5px solid #000; /* 黑框 */
+    color: #000;               /* 黑字：確保在白背景永遠看得到 */
+    border-radius: 4px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+#lang-btn:hover {
+    background: #000;         /* 移上去變黑底 */
+    color: #fff;               /* 移上去變白字 */
+}
+.nav-lang-btn {
+    margin-left: 15px; 
+    padding: 6px 12px; 
+    cursor: pointer; 
+    background-color: #f8f9fa;
+    border: 1px solid #333;
+    color: #333; /* 確保白底黑字永遠看得到 */
+    border-radius: 4px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-lang-btn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* 針對手機版的微調 (選用) */
+@media (max-width: 768px) {
+    .nav-lang-btn {
+        margin-left: 0;
+        margin-top: 10px;      /* 手機版選單展開時，跟上方的連結保持距離 */
+    }
+}
+/* 預設先隱藏中文區塊 */
+.zh-only {
+    display: none;
+}
+.en-only {
+    display: block;
+}
+
+/* 如果你的導覽列連結原本寫的是中文，可以給它一個初始的透明度，等 JS 跑完再顯示 */
+.lang-text {
+    transition: opacity 0.2s ease;
+}

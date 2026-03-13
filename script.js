@@ -1,93 +1,75 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const navbar = document.getElementById('navbar');
+    const langBtn = document.getElementById('lang-btn');
     const menuToggle = document.getElementById('mobile-menu');
     const navLinks = document.getElementById('nav-links');
-
-    // 1. 手機版選單切換
-    menuToggle.addEventListener('click', () => {
-        menuToggle.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
-
-    // 2. 滾動效果
-    window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    const heroTitle = document.querySelector('.hero-title');
-    
-    if (scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.getElementById('navbar');
-    const menuToggle = document.getElementById('mobile-menu');
-    const navLinks = document.getElementById('nav-links');
 
-    // 1. 手機版選單切換
-    menuToggle.addEventListener('click', () => {
-        menuToggle.classList.toggle('active');
-        navLinks.classList.toggle('active');
+    // 1. 手機版選單
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    }
+
+    // 2. 導覽列滾動效果
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
     });
 
-    // 2. 滾動效果
-    window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    const heroTitle = document.querySelector('.hero-title');
-    
-    if (scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
+    // 3. 多語言切換核心邏輯
+    let currentLang = localStorage.getItem('preferred-lang') || 'zh'; // 建議預設中文
 
-    const maxScroll = 400; 
-    const scrollFraction = Math.min(scrollY / maxScroll, 1);
-    
-    // 縮放：從 1 變 0.3
-    const scale = 1 - (scrollFraction * 0.7); 
-    const opacity = 1 - (scrollFraction * 1.5); 
-    
-    // 位移：讓大標題往左上角偏 (數值可視情況調整)
-    const moveX = -(scrollFraction * 150); // 增加往左偏的量
-    const moveY = -(scrollFraction * 100); 
-
-    if (heroTitle) {
-        heroTitle.style.transform = `translate(${moveX}px, ${moveY}px) scale(${scale})`;
-        heroTitle.style.opacity = opacity > 0 ? opacity : 0;
-    }
-});
-
-    // 3. 進場動畫
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+    const updateLanguage = (lang) => {
+        // 切換帶有 data-zh/data-en 的元素
+        const langElements = document.querySelectorAll('[data-zh]');
+        langElements.forEach(el => {
+            const translation = el.getAttribute(`data-${lang}`);
+            if (translation) {
+                // 檢查是否有子節點(如 <a>)，如果有，只更新文字節點
+                if (el.children.length > 0 && el.querySelector('a')) {
+                    // 保留連結，只改文字部分 (針對您參考文獻的結構)
+                    const link = el.querySelector('a');
+                    el.innerHTML = translation + '<br>';
+                    el.appendChild(link);
+                } else {
+                    el.textContent = translation;
+                }
             }
         });
-    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-});
+        // 切換長篇區塊 (專門針對您 HTML 裡的 .zh-only 和 .en-only)
+        document.querySelectorAll('.zh-only').forEach(el => {
+            el.style.display = (lang === 'zh') ? 'block' : 'none';
+        });
+        document.querySelectorAll('.en-only').forEach(el => {
+            el.style.display = (lang === 'en') ? 'block' : 'none';
+        });
 
-        navbar.classList.remove('scrolled');
+        // 更新按鈕文字
+        if (langBtn) {
+            langBtn.innerText = (lang === 'en') ? '中' : 'EN';
+        }
+        
+        localStorage.setItem('preferred-lang', lang);
+    };
+
+    // 初始執行
+    updateLanguage(currentLang);
+
+    // 按鈕點擊事件
+    if (langBtn) {
+        langBtn.addEventListener('click', () => {
+            currentLang = (currentLang === 'en') ? 'zh' : 'en';
+            updateLanguage(currentLang);
+        });
     }
 
-    const maxScroll = 400; 
-    const scrollFraction = Math.min(scrollY / maxScroll, 1);
-    
-    // 縮放：從 1 變 0.3
-    const scale = 1 - (scrollFraction * 0.7); 
-    const opacity = 1 - (scrollFraction * 1.5); 
-    
-    // 位移：讓大標題往左上角偏 (數值可視情況調整)
-    const moveX = -(scrollFraction * 150); // 增加往左偏的量
-    const moveY = -(scrollFraction * 100); 
-
-    if (heroTitle) {
-        heroTitle.style.transform = `translate(${moveX}px, ${moveY}px) scale(${scale})`;
-        heroTitle.style.opacity = opacity > 0 ? opacity : 0;
-    }
-});
-
-    // 3. 進場動畫
+    // 4. 進場動畫
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
