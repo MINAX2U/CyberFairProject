@@ -385,27 +385,34 @@ footer {
 
 @media (max-width: 768px) {
     /* =========================================
-       1. 導覽列與選單 (按鈕與漢堡選單整齊靠右)
+       1. 導覽列與選單 (按鈕靠左上，漢堡選單靠右)
        ========================================= */
     nav {
         display: flex;
-        justify-content: flex-end !important; /* 強制所有東西靠右 */
+        justify-content: flex-end !important; /* 強制漢堡選單靠右 */
         align-items: center;
         padding: 0 20px;
-        gap: 15px; /* 讓語言按鈕和三條線中間有適當距離 */
+        position: relative; /* 為了讓固定定位按鈕相對於此 */
     }
 
     .nav-title-sticky {
         display: none !important;
     }
 
-    /* 清除語言按鈕的奇怪邊距，讓它跟漢堡選單好好排在右邊 */
-    #lang-btn, .nav-lang-btn {
+    /* 👇 用戶要求：語言切換按鈕固定在左上角 👇 */
+    #lang-btn {
+        position: fixed !important;  /* 脫離原本的選單排版 */
+        left: 5% !important;         /* 靠左對齊 */
+        top: 22px !important;        /* 垂直居中在 80px 的導覽列 */
+        margin: 0 !important;        /* 清除多餘的推擠 */
+        z-index: 3000 !important;    /* 確保它在最上層，隨時都能點擊 */
+    }
+
+    /* 清除語言按鈕可能殘留的奇怪邊距，讓它跟漢堡選單好好排在右邊 */
+    .nav-lang-btn {
         margin: 0 !important; 
         padding: 4px 10px !important;
         width: fit-content;
-        /* 註：若你後來決定把按鈕移回左邊，請刪除上方三行，並改用：
-           position: fixed !important; left: 5% !important; top: 22px !important; z-index: 3000 !important; */
     }
 
     /* 漢堡選單與側邊欄動畫 */
@@ -504,7 +511,6 @@ footer {
     .modal-text-content { padding: 30px 20px; }
     .modal-name { font-size: 1.8rem; }
 }
-
 
 
 
