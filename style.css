@@ -404,6 +404,17 @@ footer {
     nav {
         justify-content: flex-end !important;
     }
+
+    .section-col {
+        flex-direction: column; /* 改為垂直排列 */
+        gap: 20px;              /* 讓上下兩張圖片保持一點距離 */
+    }
+
+    .section-image {
+        margin: 0 0 15px 0 !important; /* 清除原本電腦版的 margin，避免畫面被往左推 */
+        width: 100%;                   /* 確保圖片填滿手機螢幕寬度 */
+    }
+    
     .nav-external-links.active { right: 0; }
     .nav-external-links a { font-size: 1.5rem; border: none; background: none; padding: 0; }
     .nav-lang-btn, #lang-btn { margin-left: 0; margin-top: 10px; width: fit-content; }
