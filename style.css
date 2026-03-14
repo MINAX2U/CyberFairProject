@@ -396,6 +396,14 @@ footer {
         transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         gap: 30px;
     }
+    .nav-title-sticky {
+        display: none !important;
+    }
+
+    /* 讓導覽列的三橫線按鈕乖乖靠右 */
+    nav {
+        justify-content: flex-end !important;
+    }
     .nav-external-links.active { right: 0; }
     .nav-external-links a { font-size: 1.5rem; border: none; background: none; padding: 0; }
     .nav-lang-btn, #lang-btn { margin-left: 0; margin-top: 10px; width: fit-content; }

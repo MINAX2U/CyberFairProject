@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // 6. 多語言切換邏輯
     // ==========================================
-    let currentLang = localStorage.getItem('preferred-lang') || 'zh';
+    let currentLang = localStorage.getItem('preferred-lang') || 'en';
 
     const updateLanguage = (lang) => {
         // 切換帶有 data-zh/data-en 的元素
