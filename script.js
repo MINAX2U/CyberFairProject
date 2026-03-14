@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.getElementById('nav-links');
     const langBtn = document.getElementById('lang-btn');
     const heroTitle = document.querySelector('.hero-title');
-
+    document.body.classList.add("lang-en");
     // ==========================================
     // 2. 手機版選單切換
     // ==========================================
