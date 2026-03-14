@@ -450,6 +450,14 @@ footer {
     section, .content-section {
         margin-bottom: 60px; /* 縮小每個大區塊的垂直距離 */
     }
+    .en-only p, 
+    .outline-container p,
+    .col-text p {
+        text-align: left !important;         /* 關鍵：手機版取消強制左右對齊，改回靠左 */
+        text-justify: auto !important;       /* 取消中文字元強迫分散的設定 */
+        word-break: break-word !important;   /* 確保過長的英文單字會自動換行，不會撐破版面 */
+        line-height: 1.6 !important;         /* 手機版行高稍微收緊一點，閱讀更順暢 */
+    }
     
     /* 4. 確保圖片不會超出容器 */
     .hero-image-container, .col-image img {
