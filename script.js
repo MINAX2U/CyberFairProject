@@ -11,10 +11,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // 2. 手機版選單切換
     // ==========================================
-    if (menuToggle && navLinks) {
+   if (menuToggle && navLinks) {
+        // 點擊漢堡按鈕時的開關邏輯
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
+            document.body.classList.toggle('no-scroll'); // 點開時鎖住背景，關閉時解鎖
             navLinks.classList.toggle('active');
+        });
+
+        // 👇 這裡是你需要的！點擊選單內的任何連結時，自動收起選單並解鎖背景
+        const links = navLinks.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active'); // 漢堡按鈕恢復原狀
+                navLinks.classList.remove('active');   // 隱藏選單
+                document.body.classList.remove('no-scroll'); // 💡 解除背景鎖定！
+            });
         });
     }
 
