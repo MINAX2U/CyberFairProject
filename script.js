@@ -191,8 +191,8 @@ document.addEventListener('DOMContentLoaded', () => {
             en: "I was responsible for the website's architecture and design. This experience allowed me to significantly enhance my skills in UI/UX layout and performance optimization. Beyond the technical implementation, I gained a deeper understanding of web mechanics and learned how to balance aesthetic appeal with functional efficiency, improving my project management capabilities."
         },
         '王伯文': {
-            zh: '王伯文',
-            en: 'Wang Bowen'
+            zh: 'I love Gemini',
+            en: 'I love Gemini'
         },
         '孫晟棋': {
             zh: '在參加這次網界博覽會之後，除了學到許多與人溝通的技巧之外，原本我只對網頁設計有點理論上的認識，現在終於有機會把這些知識應用到實際的作品中，雖然這過程中十分累人，但是網站在完成之後的喜悅，讓我覺得一切都是值得的！',
