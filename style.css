@@ -341,10 +341,15 @@ nav.scrolled .nav-title-sticky {
 }
 
 .section-image {
+    margin: 1rem 0.5rem 2rem 0.5rem;
+}
+
+.section-image img {
+    min-height: 35rem;
+    aspect-ratio: 4 / 3;
     border-radius: 20px;
     width: 100%;
     object-fit: cover;
-    margin: 1rem 0.5rem 2rem 0.5rem;
 }
 
 section { margin-bottom: 120px; }
@@ -443,6 +448,13 @@ h2 {
 .reflect-img .col-image {
     margin: 1rem 0;
     box-sizing: border-box;
+}
+
+.img-source
+{
+    color: #94a3b8;
+    text-align: left;
+    font-size: 1.2rem;
 }
 
 .quote-text {
