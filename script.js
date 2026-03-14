@@ -191,8 +191,8 @@ document.addEventListener('DOMContentLoaded', () => {
             en: "I was responsible for the website's architecture and design. This experience allowed me to significantly enhance my skills in UI/UX layout and performance optimization. Beyond the technical implementation, I gained a deeper understanding of web mechanics and learned how to balance aesthetic appeal with functional efficiency, improving my project management capabilities."
         },
         '王伯文': {
-            zh: 'I love Gemini',
-            en: 'I love Gemini'
+            zh: '網頁是表達想法的重要媒介，透過參加網界博覽會，我們得以與其他跨國小組交流想法。在這個過程中，學習如何設計人性化且直覺的網頁，並與其他隊友合作改進，培養合作精神，並精進視覺設計技巧，獲益匪淺。',
+            en: 'Websites are an important creative means of expressing ideas. By engaging with the online world, we can exchange ideas with other multinational groups. In this process, we learn how to design human-centered and intuitive websites, collaborate with others to improve them, cultivate teamwork, and refine our visual design skills to become better web designers.'
         },
         '孫晟棋': {
             zh: '在參加這次網界博覽會之後，除了學到許多與人溝通的技巧之外，原本我只對網頁設計有點理論上的認識，現在終於有機會把這些知識應用到實際的作品中，雖然這過程中十分累人，但是網站在完成之後的喜悅，讓我覺得一切都是值得的！',
