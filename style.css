@@ -112,7 +112,6 @@ nav.scrolled .nav-title-sticky {
 #nav-links a.active {
     background: var(--accent);
     color: #fff;
-<<<<<<< HEAD
 }
 
 /* 手機版三橫線按鈕 */
@@ -377,9 +376,6 @@ footer {
     .menu-toggle.active span:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
-=======
-    border-color: var(--accent);
->>>>>>> 91446070abb9f77716ff999b7a9e4efaa82e907d
 }
 
 #nav-links a.active {
