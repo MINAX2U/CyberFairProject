@@ -384,23 +384,9 @@ footer {
 }
 
 @media (max-width: 768px) {
-    /* 1. 拯救過大的標題與尷尬的換行 */
-    h2, .section-header h2 {
-        font-size: 2rem !important; /* 把字體縮小到適合手機的尺寸 */
-        line-height: 1.3 !important; /* 讓多行標題緊密一點，不會散散的 */
-        margin-bottom: 1rem !important;
-        letter-spacing: -0.5px; /* 稍微縮減字距，讓英文字更好看 */
-    }
-
-    /* 2. 解決上方留白過多，把內容往上拉 */
-    .container {
-        padding-top: 100px !important; /* 剛好避開導覽列的 80px 高度再多一點點即可 */
-        padding-bottom: 40px !important;
-        padding-left: 20px !important;
-        padding-right: 20px !important;
-    }
-
-    /* 3. 整合導覽列，讓「中」按鈕和「三條線」整齊靠右 */
+    /* =========================================
+       1. 導覽列與選單 (按鈕與漢堡選單整齊靠右)
+       ========================================= */
     nav {
         display: flex;
         justify-content: flex-end !important; /* 強制所有東西靠右 */
@@ -409,19 +395,123 @@ footer {
         gap: 15px; /* 讓語言按鈕和三條線中間有適當距離 */
     }
 
-    /* 清除語言按鈕可能殘留的奇怪邊距 */
+    .nav-title-sticky {
+        display: none !important;
+    }
+
+    /* 清除語言按鈕的奇怪邊距，讓它跟漢堡選單好好排在右邊 */
     #lang-btn, .nav-lang-btn {
         margin: 0 !important; 
         padding: 4px 10px !important;
+        width: fit-content;
+        /* 註：若你後來決定把按鈕移回左邊，請刪除上方三行，並改用：
+           position: fixed !important; left: 5% !important; top: 22px !important; z-index: 3000 !important; */
     }
 
-    /* 4. 讓內文段落有更好的呼吸感 */
+    /* 漢堡選單與側邊欄動畫 */
+    .menu-toggle { display: flex; }
+    .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .nav-external-links {
+        position: fixed;
+        top: 0; right: -100%;
+        width: 100%; height: 100vh;
+        background: white;
+        flex-direction: column;
+        justify-content: center; align-items: center;
+        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        gap: 30px;
+    }
+    .nav-external-links.active { right: 0; }
+    .nav-external-links a { font-size: 1.5rem; border: none; background: none; padding: 0; }
+
+    /* =========================================
+       2. 標題與排版修正 (拯救過大的標題)
+       ========================================= */
+    h2, .section-header h2 {
+        font-size: 2rem !important; /* 適合手機的尺寸 */
+        line-height: 1.3 !important; /* 緊密一點的行高 */
+        margin-bottom: 1rem !important;
+        letter-spacing: -0.5px;
+    }
+    .outline-title { font-size: 2.2rem; }
+    .hero-title { font-size: 2rem; }
+    .content-section h3 { font-size: 1.3rem; }
+
+    /* =========================================
+       3. 內文段落 (更好的呼吸感與換行)
+       ========================================= */
     p {
         font-size: 1.05rem !important;
         line-height: 1.6 !important;
-        color: #475569 !important; /* 稍微柔和的文字顏色 */
+        color: #475569 !important; /* 柔和的文字顏色 */
     }
+    .outline-desc, .col-text p { 
+        font-size: 1rem !important; /* 配合整體 p 的設定 */
+    }
+    .en-only p, 
+    .outline-container p,
+    .col-text p {
+        text-align: left !important;         /* 取消強制左右對齊，改回靠左 */
+        text-justify: auto !important;       
+        word-break: break-word !important;   /* 確保過長的英文單字會自動換行 */
+    }
+
+    /* =========================================
+       4. 區塊間距與 Padding (解決留白與避開導覽列)
+       ========================================= */
+    .container {
+        padding-top: 100px !important; /* 避開導覽列 80px */
+        padding-bottom: 40px !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+    .content-container {
+        padding: 40px 20px; /* 針對特定內容區塊的設定 */
+    }
+    .hero-section {
+        padding: calc(var(--nav-height) + 20px) 5% 40px;
+        gap: 30px;
+    }
+    section, .content-section {
+        margin-bottom: 60px; /* 縮小每個大區塊的垂直距離 */
+    }
+
+    /* =========================================
+       5. 圖片排版 (確保不撐破螢幕、單欄排列)
+       ========================================= */
+    .section-col {
+        flex-direction: column; /* 垂直排列 */
+        gap: 20px;              
+    }
+    .section-image {
+        margin: 0 0 15px 0 !important; 
+        width: 100%;                   
+    }
+    .hero-image-container, .col-image img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: auto; /* 解除強制比例 */
+    }
+
+    /* =========================================
+       6. 彈出視窗 (Modal)
+       ========================================= */
+    .modal-body { grid-template-columns: 1fr; }
+    .modal-image-container { min-height: 250px; }
+    .modal-text-content { padding: 30px 20px; }
+    .modal-name { font-size: 1.8rem; }
 }
+
+
+
+
+
+
+
+
 #nav-links a.active {
     font-weight: 800;
 }
