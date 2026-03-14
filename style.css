@@ -845,4 +845,36 @@ footer {
     .modal-image-container { min-height: 250px; }
     .modal-text-content { padding: 30px 20px; }
     .modal-name { font-size: 1.8rem; }
+
+    /* =========================================
+       7. 手機版專屬底部下一頁按鈕
+       ========================================= */
+    .mobile-next-page {
+        display: flex !important; /* 在手機版強制顯示 */
+        justify-content: center;
+        padding: 0 20px 60px 20px; /* 確保按鈕跟頁尾之間有足夠的呼吸空間 */
+    }
+
+    .mobile-next-page a {
+        display: block;
+        width: 100%;
+        background-color: var(--accent); /* 使用你的主題藍色 */
+        color: #ffffff !important;
+        text-align: center;
+        padding: 16px 20px;
+        border-radius: 12px;
+        font-size: 1.15rem;
+        font-weight: 800;
+        text-decoration: none;
+        box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3); /* 加上藍色系陰影增加立體感 */
+        transition: transform 0.2s ease;
+    }
+
+    .mobile-next-page a:active {
+        transform: scale(0.96); /* 手機點擊時會有微縮小的按壓回饋感 */
+    }
+}
+
+.mobile-next-page {
+    display: none; 
 }
