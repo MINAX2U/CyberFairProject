@@ -26,20 +26,17 @@ body {
     overflow-x: hidden;
 }
 
-p {
-    font-size: 130%;
-}
+p { font-size: 130%; }
 
 li {
-    font-size: 1.2rem;         /* 👈 把字體調大 (跟你的 p 差不多大) */
-    line-height: 1.8;          /* 增加行高，看起來更舒服 */
-    color: var(--text-body);   /* 統一文字顏色 */
-    margin-bottom: 12px;       /* 👈 讓每個清單項目之間有一點距離，不會全部擠在一起 */
+    font-size: 1.2rem;         
+    line-height: 1.8;          
+    color: var(--text-body);   
+    margin-bottom: 12px;       
 }
 
-/* 如果你的清單是在右側的文字區塊內，可以針對它做更精準的設定 (可選) */
 .col-text li {
-    font-size: 1.25rem;        /* 可以稍微再大一點點 */
+    font-size: 1.25rem;        
     margin-bottom: 16px;
 }
 
@@ -112,270 +109,6 @@ nav.scrolled .nav-title-sticky {
 #nav-links a.active {
     background: var(--accent);
     color: #fff;
-}
-
-/* 手機版三橫線按鈕 */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    z-index: 2500;
-    padding: 10px;
-}
-
-.menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background: var(--text-main);
-    border-radius: 2px;
-    transition: 0.3s;
-}
-
-/* Hero 區塊 */
-.hero-section {
-    display: grid;
-    grid-template-columns: 1.5fr 0.5fr;
-    min-height: 80vh;
-    padding: calc(var(--nav-height) + 40px) 5% 60px;
-    gap: 40px;
-    align-items: center;
-}
-
-.hero-image-container {
-    position: relative;
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    aspect-ratio: 16 / 10;
-}
-
-.hero-image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.hero-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 40px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.8));
-    color: white;
-}
-
-hero-title {
-    font-size: 3.5rem;
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 10px;
-    /* 新增下方兩行 */
-    transition: transform 0.1s linear, opacity 0.1s linear;
-    transform-origin: top left; 
-}
-.outline-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.outline-title {
-    font-size: 3rem;
-    font-weight: 900;
-    color: var(--text-main);
-    line-height: 1;
-    margin-bottom: 20px;
-}
-
-.outline-desc {
-    font-size: 1.25rem;
-    color: var(--text-body);
-    max-width: 400px;
-}
-
-/* 圖文段落區塊 */
-.content-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 100px 24px;
-}
-
-.content-section {
-    margin-bottom: 150px;
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.section-header h2 {
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: var(--text-main);
-    position: relative;
-    display: inline-block;
-    padding-bottom: 15px;
-}
-
-/* .section-header h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 25%;
-    width: 50%;
-    height: 4px;
-    background: var(--accent);
-    border-radius: 2px;
-} */
-
-.content-section h3 {
-    text-align: center;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    /* --- 新增建議 --- */
-    max-width: 800px;      /* 限制寬度，讓長句子的換行更漂亮 */
-    margin-left: auto;     /* 配合 max-width 達成水平置中 */
-    margin-right: auto;    /* 配合 max-width 達成水平置中 */
-    line-height: 1.8;      /* 確保行間距舒適 */
-    color: var(--text-main);
-}
-
-.row {
-    display: flex;
-    align-items: center;
-    gap: 60px;
-}
-
-.row.reverse {
-    flex-direction: row-reverse;
-}
-
-.col-text {
-    flex: 1;
-}
-
-.col-text p {
-    font-size: 1.15rem;
-    margin-bottom: 20px;
-    color: var(--text-body);
-}
-
-.col-image {
-    flex: 1;
-    margin-bottom: 20px;
-}
-
-.col-image img {
-    width: 100%;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    transition: transform 0.4s ease;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-}
-
-.col-image img:hover {
-    transform: scale(1.02);
-}
-
-.reflect-img {
-    align-items: start;
-}
-
-.reflect-img .col-image {
-    margin: 1rem 0 1rem 0;
-    box-sizing: border-box;
-} 
-
-/* 動畫 */
-.fade-up {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.fade-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-footer {
-    padding: 60px 5%;
-    background: #fff;
-    border-top: 1px solid var(--border);
-    text-align: center;
-}
-
-.footer-logo {
-    margin-bottom: 1rem;
-}
-
-.footer-image {
-    max-height: 6rem;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-    box-sizing: border-box;
-    vertical-align: middle;
-}
-
-/* 響應式 */
-@media (max-width: 1024px) {
-    .hero-section {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    .outline-container { align-items: center; }
-    .hero-title { font-size: 2.5rem; }
-    .outline-title { font-size: 4rem; }
-    .row, .row.reverse {
-        flex-direction: column;
-        gap: 40px;
-    }
-}
-
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: flex;
-    }
-
-    .nav-external-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 100%;
-        height: 100vh;
-        background: white;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        gap: 30px;
-    }
-
-    .nav-external-links.active {
-        right: 0;
-    }
-
-    .nav-external-links a {
-        font-size: 1.5rem;
-        border: none;
-        background: none;
-        padding: 0;
-    }
-
-    /* 三橫線變叉叉動畫 */
-    .menu-toggle.active span:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-    .menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-    }
-    .menu-toggle.active span:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
 }
 
 #nav-links a.active {
@@ -460,40 +193,22 @@ footer {
     transform: translateY(-3px);
 }
 
-/* 手機版三橫線按鈕 */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    z-index: 2500;
-    padding: 10px;
-}
-
-.menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background: var(--text-main);
-    border-radius: 2px;
-    transition: 0.3s;
-}
-
 /* =========================================
    4. Hero 與大綱區塊 (Hero & Outline)
    ========================================= */
 .hero-section {
     display: flex; 
     align-items: center; 
-    justify-content: space-between; /* 讓內容自動填滿左右兩側 */
-    min-height: auto;               /* 讓高度隨內容自然延伸 */
-    padding: calc(var(--nav-height) + 80px) 5% 80px; /* 增加頂部間距，視覺更開闊 */
-    gap: 60px;                      /* 擴大圖文間的呼吸空間 */
+    justify-content: space-between; 
+    min-height: auto;               
+    padding: calc(var(--nav-height) + 80px) 5% 80px; 
+    gap: 60px;                      
     max-width: 1400px;
     margin: 0 auto;
 }
 
 .hero-image-container {
-    flex: 1.2;                      /* 照片比例 1.2 */
+    flex: 1.2;                      
     position: relative;
     border-radius: 24px;
     overflow: hidden;
@@ -533,14 +248,13 @@ footer {
 }
 
 .outline-container {
-    flex: 1;                        /* 文字比例 1 */
+    flex: 1;                        
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: left; 
 }
 
-/* 質感裝飾線 */
 .outline-container::before {
     content: "";
     display: block;
@@ -553,10 +267,10 @@ footer {
 
 .outline-container p {
     font-size: 1.15rem; 
-    line-height: 2;                 /* 高級感的關鍵：極致行高 */
+    line-height: 2;                 
     color: var(--text-body);
     margin: 0;
-    text-align: justify;            /* 兩端對齊，消除右側參差不齊的空洞感 */
+    text-align: justify;            
     text-justify: inter-character;
 }
 
@@ -572,7 +286,7 @@ footer {
     font-size: 1.25rem;
     color: var(--text-body);
     margin-bottom: 30px;
-    max-width: 100%; /* 解除寬度限制，讓它自然填滿 */
+    max-width: 100%; 
 }
 
 .outline-links {
@@ -656,7 +370,11 @@ h2 {
 
 .section-header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 60px;
+    opacity: 1 !important;
+    transform: none !important;
+    width: 100%;
+    display: block;
 }
 
 .section-header h2 {
@@ -666,7 +384,16 @@ h2 {
     position: relative;
     display: inline-block;
     padding-bottom: 15px;
-    margin-bottom: 0;
+    margin-bottom: 5px;
+}
+
+.section-subtitle {
+    font-size: 1rem; 
+    color: var(--text-body); 
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 15px; 
+    display: block; 
 }
 
 .content-section h3 {
@@ -732,8 +459,8 @@ h2 {
    ========================================= */
 .member-grid {
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 30px;
 }
 
 .member-card {
@@ -779,8 +506,11 @@ h2 {
 }
 
 .member-image {
-    max-width: 100%;
-    border-radius: 1rem;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-top: 15px;
 }
 
 /* =========================================
@@ -924,6 +654,24 @@ body.lang-en .en-only { display: block; }
     transition: opacity 0.2s ease;
 }
 
+/* 手機版三橫線按鈕 (此處補上剛剛遺漏的漢堡按鈕基礎設定) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 2500;
+    padding: 10px;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-main);
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
 /* =========================================
    9. 頁尾 (Footer)
    ========================================= */
@@ -970,47 +718,194 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .menu-toggle {
+    /* =========================================
+       1. 導覽列與選單 (按鈕靠左上，漢堡選單靠右)
+       ========================================= */
+    nav {
         display: flex;
-    }
-
-    .nav-external-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 100%;
-        height: 100vh;
-        background: white;
-        flex-direction: column;
-        justify-content: center;
+        justify-content: flex-end !important; 
         align-items: center;
-        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        gap: 30px;
+        padding: 0 20px;
+        position: relative; 
     }
 
-    .nav-external-links.active {
-        right: 0;
+    .nav-title-sticky {
+        display: none !important;
     }
 
-    .nav-external-links a {
-        font-size: 1.5rem;
-        border: none;
-        background: none;
-        padding: 0;
+    /* 👇 語言切換按鈕固定在左上角 👇 */
+    #lang-btn {
+        position: fixed !important;  
+        left: 5% !important;         
+        top: 22px !important;        
+        margin: 0 !important;        
+        z-index: 3000 !important;    
     }
 
-    .nav-lang-btn, #lang-btn {
-        margin-left: 0;
-        margin-top: 10px;
+    .nav-lang-btn {
+        margin: 0 !important; 
+        padding: 4px 10px !important;
         width: fit-content;
     }
 
+    /* 漢堡選單與側邊欄動畫 */
+    .menu-toggle { display: flex; }
     .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .menu-toggle.active span:nth-child(2) { opacity: 0; }
     .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-    .modal-body { grid-template-columns: 1fr; }
-    .modal-image-container { min-height: 250px; }
-    .modal-text-content { padding: 40px 30px; }
-    .modal-name { font-size: 2rem; }
+    .nav-external-links {
+        position: fixed;
+        top: 0; right: -100%;
+        width: 100%; height: 100vh;
+        background: white;
+        flex-direction: column;
+        justify-content: center; align-items: center;
+        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        gap: 30px;
+    }
+    .nav-external-links.active { right: 0; }
+    .nav-external-links a { font-size: 1.5rem; border: none; background: none; padding: 0; }
+
+    /* =========================================
+       2. 標題與排版修正 (拯救過大的標題)
+       ========================================= */
+    h2, .section-header h2 {
+        font-size: 2rem !important; 
+        line-height: 1.3 !important; 
+        margin-bottom: 1rem !important;
+        letter-spacing: -0.5px;
+    }
+    .outline-title { font-size: 2.2rem; }
+    .hero-title { font-size: 2rem; }
+    .content-section h3 { font-size: 1.3rem; }
+
+    /* =========================================
+       3. 內文段落 (更好的呼吸感與換行)
+       ========================================= */
+    p {
+        font-size: 1.05rem !important;
+        line-height: 1.6 !important;
+        color: #475569 !important; 
+    }
+    .outline-desc, .col-text p { 
+        font-size: 1rem !important; 
+    }
+    .en-only p, 
+    .outline-container p,
+    .col-text p {
+        text-align: left !important;         
+        text-justify: auto !important;       
+        word-break: break-word !important;   
+    }
+
+    /* =========================================
+       4. 區塊間距與 Padding (解決留白與避開導覽列)
+       ========================================= */
+    .container {
+        padding-top: 100px !important; 
+        padding-bottom: 40px !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+    .content-container {
+        padding: 40px 20px; 
+    }
+    .hero-section {
+        padding: calc(var(--nav-height) + 20px) 5% 40px;
+        gap: 30px;
+    }
+    
+    /* 💡 這行非常關鍵！這是解決您截圖中「異常大空格」的魔法 */
+    section, .content-section {
+        margin-bottom: 60px !important; 
+    }
+
+    /* =========================================
+       5. 圖片排版 (確保不撐破螢幕、單欄排列)
+       ========================================= */
+    .section-col {
+        flex-direction: column; 
+        gap: 20px;              
+    }
+    .section-image {
+        margin: 0 0 15px 0 !important; 
+        width: 100%;                   
+    }
+    .hero-image-container, .col-image img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: auto; 
+    }
+
+    /* =========================================
+       6. 彈出視窗 (Modal) - 手機版優化
+       ========================================= */
+    .modal-card {
+        max-height: 85vh !important; /* 限制卡片高度最多只能佔螢幕的 85% */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-body { 
+        grid-template-columns: 1fr; 
+        overflow-y: auto; /* 💡 魔法在這裡：讓內容太長時可以在卡片內部滑動 */
+        -webkit-overflow-scrolling: touch; /* 讓 iPhone 滑動起來更順暢 */
+    }
+
+    .modal-image-container { 
+        min-height: 250px; 
+        flex-shrink: 0; /* 防止圖片被擠壓 */
+    }
+    
+    .modal-text-content { 
+        padding: 30px 20px; 
+    }
+    
+    .modal-name { 
+        font-size: 1.8rem; 
+    }
+
+    /* 確保 X 按鈕永遠浮在最上層，而且幫它加個白底跟陰影，以免跟圖片混在一起 */
+    .modal-close {
+        background: #ffffff !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15) !important;
+        top: 15px !important;
+        right: 15px !important;
+        z-index: 2000 !important;
+    }
+
+    /* =========================================
+       7. 手機版專屬底部下一頁按鈕
+       ========================================= */
+    .mobile-next-page {
+        display: flex !important; /* 在手機版強制顯示 */
+        justify-content: center;
+        padding: 0 20px 60px 20px; /* 確保按鈕跟頁尾之間有足夠的呼吸空間 */
+    }
+
+    .mobile-next-page a {
+        display: block;
+        width: 100%;
+        background-color: var(--accent); /* 使用你的主題藍色 */
+        color: #ffffff !important;
+        text-align: center;
+        padding: 16px 20px;
+        border-radius: 12px;
+        font-size: 1.15rem;
+        font-weight: 800;
+        text-decoration: none;
+        box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3); /* 加上藍色系陰影增加立體感 */
+        transition: transform 0.2s ease;
+    }
+
+    .mobile-next-page a:active {
+        transform: scale(0.96); /* 手機點擊時會有微縮小的按壓回饋感 */
+    }
+
+    
+}
+
+.mobile-next-page {
+    display: none; 
 }
