@@ -839,12 +839,41 @@ footer {
     }
 
     /* =========================================
-       6. 彈出視窗 (Modal)
+       6. 彈出視窗 (Modal) - 手機版優化
        ========================================= */
-    .modal-body { grid-template-columns: 1fr; }
-    .modal-image-container { min-height: 250px; }
-    .modal-text-content { padding: 30px 20px; }
-    .modal-name { font-size: 1.8rem; }
+    .modal-card {
+        max-height: 85vh !important; /* 限制卡片高度最多只能佔螢幕的 85% */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-body { 
+        grid-template-columns: 1fr; 
+        overflow-y: auto; /* 💡 魔法在這裡：讓內容太長時可以在卡片內部滑動 */
+        -webkit-overflow-scrolling: touch; /* 讓 iPhone 滑動起來更順暢 */
+    }
+
+    .modal-image-container { 
+        min-height: 250px; 
+        flex-shrink: 0; /* 防止圖片被擠壓 */
+    }
+    
+    .modal-text-content { 
+        padding: 30px 20px; 
+    }
+    
+    .modal-name { 
+        font-size: 1.8rem; 
+    }
+
+    /* 確保 X 按鈕永遠浮在最上層，而且幫它加個白底跟陰影，以免跟圖片混在一起 */
+    .modal-close {
+        background: #ffffff !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15) !important;
+        top: 15px !important;
+        right: 15px !important;
+        z-index: 2000 !important;
+    }
 
     /* =========================================
        7. 手機版專屬底部下一頁按鈕
@@ -873,6 +902,8 @@ footer {
     .mobile-next-page a:active {
         transform: scale(0.96); /* 手機點擊時會有微縮小的按壓回饋感 */
     }
+
+    
 }
 
 .mobile-next-page {
