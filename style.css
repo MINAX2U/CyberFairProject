@@ -280,7 +280,10 @@ nav.scrolled .nav-title-sticky {
     color: var(--text-main);
     line-height: 1;
     margin-bottom: 20px;
+    white-space: pre-line;
 }
+
+
 
 .outline-desc {
     font-size: 1.25rem;
