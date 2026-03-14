@@ -366,7 +366,8 @@ h2 {
 .content-container {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 20px;
+    /* 原本是 padding: 20px; 改成下面這行 👇 */
+    padding: calc(var(--nav-height) + 40px) 20px 20px; 
 }
 
 .content-section {
@@ -821,7 +822,8 @@ footer {
         padding-right: 20px !important;
     }
     .content-container {
-        padding: 40px 20px; 
+        /* 原本是 padding: 40px 20px; 改成下面這行 👇 */
+        padding: calc(var(--nav-height) + 20px) 20px 40px; 
     }
     .hero-section {
         padding: calc(var(--nav-height) + 20px) 5% 40px;
