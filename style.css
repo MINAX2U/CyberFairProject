@@ -414,7 +414,13 @@ footer {
         margin: 0 0 15px 0 !important; /* 清除原本電腦版的 margin，避免畫面被往左推 */
         width: 100%;                   /* 確保圖片填滿手機螢幕寬度 */
     }
-    
+    #lang-btn {
+        position: fixed !important;  /* 脫離原本的選單排版 */
+        left: 5% !important;         /* 靠左對齊 (與原本的左右邊距相同) */
+        top: 22px !important;        /* 抓導覽列 80px 的視覺中心 */
+        margin: 0 !important;        /* 清除多餘的推擠 */
+        z-index: 3000 !important;    /* 確保它在最上層，隨時都能點擊 */
+    }
     .nav-external-links.active { right: 0; }
     .nav-external-links a { font-size: 1.5rem; border: none; background: none; padding: 0; }
     .nav-lang-btn, #lang-btn { margin-left: 0; margin-top: 10px; width: fit-content; }
