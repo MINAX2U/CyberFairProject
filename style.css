@@ -915,9 +915,34 @@ footer {
         transform: scale(0.96); /* 手機點擊時會有微縮小的按壓回饋感 */
     }
 
+    nav {
+        display: flex;
+        justify-content: flex-end !important; 
+        align-items: center;
+        padding: 0 20px;
+        position: fixed !important; /* 💡 改回 fixed，讓它永遠貼在頂端 */
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
     
+    .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%); /* 💡 強制絕對置中，不影響左右按鈕 */
+        font-size: 1.25rem !important; /* 字體稍微縮小一點適應手機 */
+        max-width: 50vw; /* 限制最大寬度，不能超過螢幕一半 */
+        white-space: nowrap; /* 強制不換行 */
+        overflow: hidden; /* 超出的部分隱藏 */
+        text-overflow: ellipsis; /* 💡 太長的話字尾會自動變成「...」 */
+    }
 }
 
 .mobile-next-page {
     display: none; 
+}
+
+/* 鎖定背景滾動專用 class */
+body.no-scroll {
+    overflow: hidden;
 }
